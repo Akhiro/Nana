@@ -1,6 +1,7 @@
-/**
- * Tout droits r�serv�s. Copyright 2015 Seb&Lulu
- * @author Jean-Sebastien
+/*
+ * Copyright (c) 2015 - Seb&Lulu
+ * Author(s) : jsdidierlaurent
+ * Date : 06 mars 2015
  */
 package com.nana.core.trigger;
 
@@ -23,8 +24,9 @@ public final class TriggerAND extends Trigger {
 
 	@Override
 	public void execute() {
-		if (!_stateTester.isValid())
+		if (!_stateTester.isValid()) {
 			return;
+		}
 
 		super.execute();
 	}

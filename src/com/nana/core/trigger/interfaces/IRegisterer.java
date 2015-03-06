@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2006-2014 - Ankama Games
+ * Copyright (c) 2015 - Seb&Lulu
  * Author(s) : jsdidierlaurent
- * Date : 6 mars 2015
+ * Date : 06 mars 2015
  */
 package com.nana.core.trigger.interfaces;
 

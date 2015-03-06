@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2014 - Ankama Games
+ * Copyright (c) 2015 - Ankama Games
  * Author(s) : jsdidierlaurent
  * Date : 4 mars 2015
  */
