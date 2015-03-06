@@ -11,18 +11,18 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.core.state.interfaces.IState;
-import com.nana.core.trigger.StateChangedTrigger;
+import com.nana.core.trigger.TriggerState;
 
 public abstract class State<T> implements IState<T> {
 
-	private final List<StateChangedTrigger> _triggers = new ArrayList<StateChangedTrigger>();
+	private final List<TriggerState> _triggers = new ArrayList<TriggerState>();
 
 	public State() {
 		super();
 	}
 
 	@Override
-	public void register(@NonNull final StateChangedTrigger trigger) {
+	public void register(@NonNull final TriggerState trigger) {
 		if (_triggers.contains(trigger)) {
 			return;
 		}

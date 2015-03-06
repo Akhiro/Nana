@@ -3,12 +3,13 @@
  * Author(s) : jsdidierlaurent
  * Date : 06 mars 2015
  */
-package com.nana.core.trigger;
+package com.nana.core.trigger.decorator;
 
 import java.util.Arrays;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.nana.core.trigger.Trigger;
 import com.nana.core.trigger.interfaces.ITrigger;
 
 public final class TriggerOR extends Trigger {

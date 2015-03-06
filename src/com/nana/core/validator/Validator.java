@@ -3,19 +3,20 @@
  * Author(s) : jsdidierlaurent
  * Date : 06 mars 2015
  */
-package com.nana.core.state.tester;
+package com.nana.core.validator;
 
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.core.state.interfaces.IState;
-import com.nana.core.state.interfaces.IStateTester;
-import com.nana.core.trigger.StateChangedTrigger;
+import com.nana.core.trigger.TriggerState;
+import com.nana.core.validator.interfaces.IValidator;
 
-public abstract class StateTester<T> implements IStateTester {
+public abstract class Validator<T> implements IValidator {
 	@NonNull private final IState<T> _state;
 	@NonNull private final T _value;
 
-	public StateTester(@NonNull final IState<T> state, @NonNull final T value) {
+	/** Sert à valider un Etat **/
+	public Validator(@NonNull final IState<T> state, @NonNull final T value) {
 		_state = state;
 		_value = value;
 	}
@@ -30,7 +31,7 @@ public abstract class StateTester<T> implements IStateTester {
 	}
 
 	@Override
-	public void register(@NonNull final StateChangedTrigger trigger) {
+	public void register(@NonNull final TriggerState trigger) {
 		_state.register(trigger);
 	}
 }

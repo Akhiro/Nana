@@ -3,20 +3,21 @@
  * Author(s) : jsdidierlaurent
  * Date : 06 mars 2015
  */
-package com.nana.core.trigger;
+package com.nana.core.trigger.decorator;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.state.interfaces.IStateTester;
+import com.nana.core.trigger.Trigger;
 import com.nana.core.trigger.interfaces.ITrigger;
+import com.nana.core.validator.interfaces.IValidator;
 
 public final class TriggerAND extends Trigger {
 	private final ITrigger _trigger;
-	private final IStateTester _stateTester;
+	private final IValidator _validator;
 
-	public TriggerAND(@NonNull final ITrigger trigger, final IStateTester stateTester) {
+	public TriggerAND(@NonNull final ITrigger trigger, final IValidator validator) {
 		_trigger = trigger;
-		_stateTester = stateTester;
+		_validator = validator;
 
 		/** On spécifie le parent du parametre **/
 		_trigger.setExecutor(this);
@@ -24,7 +25,7 @@ public final class TriggerAND extends Trigger {
 
 	@Override
 	public void execute() {
-		if (!_stateTester.isValid()) {
+		if (!_validator.isValid()) {
 			return;
 		}
 

@@ -5,10 +5,9 @@
  */
 package com.nana.core.trigger;
 
-public class HTTPRequestTrigger extends Trigger {
+public class TriggerTime extends Trigger {
 
-	public HTTPRequestTrigger() {
+	public TriggerTime() {
 		super();
 	}
-
 }

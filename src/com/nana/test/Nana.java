@@ -6,15 +6,13 @@
 package com.nana.test;
 
 import com.nana.core.action.interfaces.IAction;
-import com.nana.core.state.BooleanState;
-import com.nana.core.state.tester.BooleanStateTester;
-import com.nana.core.state.tester.operator.StateTesterNOT;
-import com.nana.core.state.tester.operator.StateTesterOR;
+import com.nana.core.state.StateBoolean;
 import com.nana.core.task.Task;
-import com.nana.core.trigger.StateChangedTrigger;
-import com.nana.core.trigger.TimedTrigger;
-import com.nana.core.trigger.TriggerAND;
+import com.nana.core.trigger.TriggerState;
+import com.nana.core.trigger.TriggerTime;
+import com.nana.core.trigger.decorator.TriggerOR;
 import com.nana.core.trigger.interfaces.ITrigger;
+import com.nana.core.validator.ValidatorBoolean;
 
 public class Nana {
 	public static void main(final String[] args) throws InterruptedException {
@@ -22,48 +20,39 @@ public class Nana {
 //			Thread.sleep(50000);
 //		}
 
-		BooleanState CeliaIsConnected = new BooleanState(false);
-		BooleanState SebIsConnected = new BooleanState(false);
-		BooleanState AJouerLeMessage = new BooleanState(false);
+		StateBoolean CeliaIsConnected = new StateBoolean(false);
+		StateBoolean SebIsConnected = new StateBoolean(false);
+		StateBoolean AJoueLeMessage = new StateBoolean(false);
 
 		new Task(
-			new TriggerAND(
-				new StateChangedTrigger( new StateTesterOR(
-						new BooleanStateTester(CeliaIsConnected),
-						new BooleanStateTester(SebIsConnected)
-				)),
-				new StateTesterNOT(new BooleanStateTester(AJouerLeMessage))
+			new TriggerOR(
+				new TriggerState(new ValidatorBoolean(CeliaIsConnected)),
+				new TriggerState(new ValidatorBoolean(SebIsConnected))
 			),
 			new IAction() {
 				@Override
 				public void execute() {
 					System.out.println("Quelqu'un vient de rentrer a la maison !!");
-					AJouerLeMessage.setState(true);
+					AJoueLeMessage.setState(true);
 				}
 			}
 		);
 
-		ITrigger test = new TimedTrigger();
+		ITrigger test = new TriggerTime();
 		new Task(
 			test,
 			new IAction() {
 				@Override
 				public void execute() {
 					System.out.println("Il est 8h !!");
-					AJouerLeMessage.setState(true);
 				}
 			}
 		);
 
-		Thread.sleep(2000);
 		CeliaIsConnected.setState(true);
-		Thread.sleep(2000);
-		CeliaIsConnected.setState(false);
-		Thread.sleep(2000);
-		CeliaIsConnected.setState(true);
-		test.execute();
-		AJouerLeMessage.setState(false);
 		SebIsConnected.setState(true);
+		CeliaIsConnected.setState(false);
+
 
 
 

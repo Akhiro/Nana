@@ -5,9 +5,10 @@
  */
 package com.nana.core.trigger;
 
-public class TimedTrigger extends Trigger {
+public class TriggerHTTP extends Trigger {
 
-	public TimedTrigger() {
+	public TriggerHTTP() {
 		super();
 	}
+
 }

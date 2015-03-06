@@ -7,24 +7,24 @@ package com.nana.core.trigger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.state.interfaces.IStateTester;
+import com.nana.core.validator.interfaces.IValidator;
 
-public class StateChangedTrigger extends Trigger {
+public class TriggerState extends Trigger {
 
-	@NonNull private final IStateTester _stateTester;
+	@NonNull private final IValidator _validator;
 
-	public StateChangedTrigger(@NonNull final IStateTester stateTester) {
+	public TriggerState(@NonNull final IValidator validator) {
 		super();
 
-		_stateTester = stateTester;
+		_validator = validator;
 
 		/** On enregirstre le trigger sur le state pour qu'il prioc au changement d'état **/
-		stateTester.register(this);
+		_validator.register(this);
 	}
 
 	@Override
 	public void execute() {
-		if (_stateTester.isValid()) {
+		if (_validator.isValid()) {
 			super.execute();
 		}
 	}

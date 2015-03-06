@@ -7,10 +7,10 @@ package com.nana.core.state;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-public class BooleanState extends State<Boolean>{
+public class StateBoolean extends State<Boolean>{
 	private Boolean _state;
 
-	public BooleanState(@NonNull final Boolean state) {
+	public StateBoolean(@NonNull final Boolean state) {
 		_state = state;
 	}
 
