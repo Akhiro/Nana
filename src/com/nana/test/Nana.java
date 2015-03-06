@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 - Ankama Games
+ * Copyright (c) 2015 - Seb&Lulu
  * Author(s) : jsdidierlaurent
  * Date : 4 mars 2015
  */
@@ -21,7 +21,6 @@ public class Nana {
 //		try (AbstractXmlApplicationContext ctx = new FileSystemXmlApplicationContext("conf/triggered-job-configuration.xml")) {
 //			Thread.sleep(50000);
 //		}
-
 
 		BooleanState CeliaIsConnected = new BooleanState(false);
 		BooleanState SebIsConnected = new BooleanState(false);
