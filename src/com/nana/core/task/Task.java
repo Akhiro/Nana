@@ -19,12 +19,12 @@ public class Task implements ITask {
 		_trigger = trigger;
 		_action = action;
 
-		/** On sp�cifie le parent du paremetre **/
-		_trigger.setExecutor(this);
+		/** On spécifie le parent du paremetre **/
+		_trigger.register(this);
 	}
 
 	@Override
-	public void execute() {
+	public void notif() {
 		_action.execute();
 	}
 }

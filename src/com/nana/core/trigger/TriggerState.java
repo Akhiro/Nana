@@ -23,9 +23,9 @@ public class TriggerState extends Trigger {
 	}
 
 	@Override
-	public void execute() {
+	public void notif() {
 		if (_validator.isValid()) {
-			super.execute();
+			super.notif();
 		}
 	}
 }

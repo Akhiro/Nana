@@ -8,7 +8,7 @@ package com.nana.core.validator;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.core.state.interfaces.IState;
-import com.nana.core.trigger.TriggerState;
+import com.nana.core.trigger.interfaces.ITrigger;
 import com.nana.core.validator.interfaces.IValidator;
 
 public abstract class Validator<T> implements IValidator {
@@ -22,16 +22,16 @@ public abstract class Validator<T> implements IValidator {
 	}
 
 	@Override
+	public void register(@NonNull final ITrigger trigger) {
+		_state.register(trigger);
+	}
+
+	@Override
 	public boolean isValid() {
 		return _state.isValid(_value);
 	}
 
 	public IState<T> getState() {
 		return _state;
-	}
-
-	@Override
-	public void register(@NonNull final TriggerState trigger) {
-		_state.register(trigger);
 	}
 }

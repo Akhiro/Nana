@@ -11,18 +11,18 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.core.state.interfaces.IState;
-import com.nana.core.trigger.TriggerState;
+import com.nana.core.trigger.interfaces.ITrigger;
 
 public abstract class State<T> implements IState<T> {
 
-	private final List<TriggerState> _triggers = new ArrayList<TriggerState>();
+	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
 	public State() {
 		super();
 	}
 
 	@Override
-	public void register(@NonNull final TriggerState trigger) {
+	public void register(@NonNull final ITrigger trigger) {
 		if (_triggers.contains(trigger)) {
 			return;
 		}
@@ -31,7 +31,8 @@ public abstract class State<T> implements IState<T> {
 	}
 
 	/** Si l'état a changé, on previent tous les triggers qui leurs sont attaché **/
-	protected void stateChanged(){
-		_triggers.stream().forEach(trigger -> trigger.execute());
+	@Override
+	public void notifyObservers() {
+		_triggers.stream().forEach(trigger -> trigger.notif());
 	}
 }

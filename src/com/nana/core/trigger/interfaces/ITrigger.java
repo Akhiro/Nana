@@ -5,10 +5,8 @@
  */
 package com.nana.core.trigger.interfaces;
 
-import org.eclipse.jdt.annotation.NonNull;
+import com.nana.utils.pattern.observer.IObservable;
+import com.nana.utils.pattern.observer.IObserver;
 
-import com.nana.core.task.interfaces.IExecutor;
-
-public interface ITrigger extends IExecutor {
-	public void setExecutor(@NonNull final IExecutor parent);
+public interface ITrigger extends IObserver, IObservable<IObserver> {
 }

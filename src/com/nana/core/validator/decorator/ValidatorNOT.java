@@ -7,7 +7,7 @@ package com.nana.core.validator.decorator;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.trigger.TriggerState;
+import com.nana.core.trigger.interfaces.ITrigger;
 import com.nana.core.validator.interfaces.IValidator;
 
 public class ValidatorNOT implements IValidator {
@@ -24,7 +24,7 @@ public class ValidatorNOT implements IValidator {
 	}
 
 	@Override
-	public void register(@NonNull final TriggerState trigger) {
+	public void register(@NonNull final ITrigger trigger) {
 		_validator.register(trigger);
 	}
 }
