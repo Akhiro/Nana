@@ -14,8 +14,4 @@
 		<constructor-arg type="Boolean" value="false" />
 	</bean>
 	
-	
-	<!-- LISTES DES API DISPO DANS LES MODULES -->
-	<bean id="API-KAROTZ" class="com.nana.test.APIKarotz" scope="singleton" />
-	<bean id="API-BIDULE" class="com.nana.test.APIBidule" scope="singleton" />
 </beans>
