@@ -7,10 +7,10 @@ package com.nana.core.trigger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.nana.core.TriggerRegistererManager;
 import com.nana.core.validator.interfaces.IValidator;
 
 public class TriggerState extends Trigger {
-
 	@NonNull private final IValidator _validator;
 
 	public TriggerState(@NonNull final IValidator validator) {
@@ -18,8 +18,8 @@ public class TriggerState extends Trigger {
 
 		_validator = validator;
 
-		/** On enregirstre le trigger sur le state pour qu'il prioc au changement d'état **/
-		_validator.register(this);
+		/** On enregistre le trigger sur le state pour qu'il proc au changement d'état **/
+		TriggerRegistererManager.getInstance().register(this, _validator);
 	}
 
 	@Override
