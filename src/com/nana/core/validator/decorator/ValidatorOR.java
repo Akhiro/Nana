@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.trigger.TriggerState;
+import com.nana.core.trigger.interfaces.ITrigger;
 import com.nana.core.validator.interfaces.IValidator;
 
 public class ValidatorOR implements IValidator {
@@ -32,7 +32,7 @@ public class ValidatorOR implements IValidator {
 	}
 
 	@Override
-	public void register(@NonNull final TriggerState trigger) {
+	public void register(@NonNull final ITrigger trigger) {
 		Arrays.stream(_validators).forEach(validator -> validator.register(trigger));
 	}
 }

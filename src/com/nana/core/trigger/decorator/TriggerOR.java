@@ -19,6 +19,6 @@ public final class TriggerOR extends Trigger {
 		_triggers = triggers;
 
 		/** On spécifie que le parent des parametres **/
-		Arrays.stream(_triggers).forEach(trigger -> trigger.setExecutor(this));
+		Arrays.stream(_triggers).forEach(trigger -> trigger.register(this));
 	}
 }

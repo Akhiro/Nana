@@ -5,5 +5,7 @@
  */
 package com.nana.core.task.interfaces;
 
-public interface ITask extends IExecutor {
+import com.nana.utils.pattern.observer.IObserver;
+
+public interface ITask extends IObserver {
 }

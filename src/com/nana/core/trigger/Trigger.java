@@ -7,11 +7,11 @@ package com.nana.core.trigger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.task.interfaces.IExecutor;
 import com.nana.core.trigger.interfaces.ITrigger;
+import com.nana.utils.pattern.observer.IObserver;
 
 public abstract class Trigger implements ITrigger {
-	private IExecutor _parent;
+	private IObserver _parent;
 
 	public Trigger() {
 		super();
@@ -19,15 +19,21 @@ public abstract class Trigger implements ITrigger {
 
 	/** Set le parent pour faire remonter l'event d'execution **/
 	@Override
-	public final void setExecutor(@NonNull final IExecutor parent) {
+	public final void register(@NonNull final IObserver parent) {
 		_parent = parent;
+	}
+
+	/** On remonte l'information au parent (Un Trigger Parent ou la Task) **/
+	@Override
+	public final void notifyObservers() {
+		_parent.notif();
 	}
 
 	/** Si la methode execute est Call, c'est que le trigger vient d'etre appelé.
 	 * On remonte donc tous les parents jusqu'a arriver a la Task
 	 */
 	@Override
-	public void execute() {
-		_parent.execute();
+	public void notif() {
+		notifyObservers();
 	}
 }

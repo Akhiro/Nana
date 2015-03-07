@@ -20,15 +20,15 @@ public final class TriggerAND extends Trigger {
 		_validator = validator;
 
 		/** On spécifie le parent du parametre **/
-		_trigger.setExecutor(this);
+		_trigger.register(this);
 	}
 
 	@Override
-	public void execute() {
+	public void notif() {
 		if (!_validator.isValid()) {
 			return;
 		}
 
-		super.execute();
+		super.notif();
 	}
 }

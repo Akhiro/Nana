@@ -5,9 +5,12 @@
  */
 package com.nana.core.validator.interfaces;
 
-import com.nana.core.trigger.TriggerState;
-import com.nana.core.trigger.interfaces.IRegisterer;
+import org.eclipse.jdt.annotation.NonNull;
 
-public interface IValidator extends IRegisterer<TriggerState>{
+import com.nana.core.trigger.interfaces.ITrigger;
+
+public interface IValidator {
 	public boolean isValid();
+	/** Sert de pont pour relier un Trigger et un State. Un validator n'est pas un Observable pour autant **/
+	public void register(@NonNull final ITrigger trigger);
 }

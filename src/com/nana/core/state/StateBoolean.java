@@ -20,7 +20,7 @@ public class StateBoolean extends State<Boolean>{
 			_state = state;
 
 			/** On notifie que l'etat a changé a tous les triggers **/
-			stateChanged();
+			notifyObservers();
 		}
 	}
 

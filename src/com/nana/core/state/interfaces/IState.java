@@ -7,10 +7,10 @@ package com.nana.core.state.interfaces;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.trigger.TriggerState;
-import com.nana.core.trigger.interfaces.IRegisterer;
+import com.nana.core.trigger.interfaces.ITrigger;
+import com.nana.utils.pattern.observer.IObservable;
 
-public interface IState<T> extends IRegisterer<TriggerState> {
+public interface IState<T> extends IObservable<ITrigger> {
 	public void setState(@NonNull final T state);
 	public boolean isValid(@NonNull final T state);
 }
