@@ -1,4 +1,6 @@
-package com.nana.api.karotz;
+package com.nana.api.karotz.functions;
+
+import com.nana.api.karotz.BaseKarotz;
 
 public class TTSKarotz extends BaseKarotz {
 
@@ -15,6 +17,5 @@ public class TTSKarotz extends BaseKarotz {
 
 	public void sendMessageTTSNow(final String message){
 		sendUrlKarotz(_urlTTS + message + _nocache + "0" + _mute + "0");
-		System.out.println("sendMessageTTSNow : " + _urlTTS + message + _nocache + "0" + _mute + "0" );
 	}
 }

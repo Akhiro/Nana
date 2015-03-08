@@ -23,8 +23,6 @@ public abstract class BaseKarotz {
 			e.printStackTrace();
 		}
 
-		System.out.println("sendUrlKarotz : " + url.toString());
-
 		try {
 			resultSendMessage = url.openStream();
 		} catch (IOException e) {

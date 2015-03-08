@@ -3,6 +3,7 @@ package com.nana.api.karotz;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.api.interfaces.IAPIReturns;
+import com.nana.api.karotz.functions.TTSKarotz;
 
 public class APIKarotz implements IAPIKarotz {
 	private final String _beginUrl;
