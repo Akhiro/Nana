@@ -2,8 +2,6 @@ package com.nana.api.karotz;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -17,17 +15,12 @@ public abstract class BaseKarotz {
 
 		try {
 			url = tools.UTF8URL(urlString);
-		} catch (UnsupportedEncodingException | MalformedURLException
-				| URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		System.out.println("sendUrlKarotz : " + url.toString());
 
-		try {
 			resultSendMessage = url.openStream();
-		} catch (IOException e) {
+
+		} catch (IOException | URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

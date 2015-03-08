@@ -5,6 +5,8 @@
  */
 package com.nana;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
@@ -18,7 +20,7 @@ import com.nana.core.TriggerRegistererManager;
 public class Nana {
 	static final Logger logger = LogManager.getLogger(Nana.class.getName());
 
-	public static void main(final String[] args) throws InterruptedException {
+	public static void main(final String[] args) throws InterruptedException, NoSuchAlgorithmException, IOException {
 		try (AbstractXmlApplicationContext contextScheduler = new FileSystemXmlApplicationContext("conf/application/scheduler.xml")) {
 			ThreadPoolTaskScheduler scheduler = contextScheduler.getBean(ThreadPoolTaskScheduler.class);
 			if (scheduler != null) {
@@ -33,10 +35,11 @@ public class Nana {
 
 
 				try (AbstractXmlApplicationContext ctx = new FileSystemXmlApplicationContext(modules.toArray(new String[modules.size()]))) {
-					Thread.sleep(10000);
+					Thread.sleep(50000);
 				}
 			}
 		}
+
 
 
 	}

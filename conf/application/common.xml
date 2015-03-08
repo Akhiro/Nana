@@ -14,4 +14,10 @@
 		<constructor-arg type="Boolean" value="false" />
 	</bean>
 	
+	<!-- LISTES DES APIS DISPO DANS LES MODULES -->
+	<bean id="API-Karotz" class="com.nana.api.karotz.APIKarotz" scope="singleton">
+		<constructor-arg name="beginUrl" value="http://192.168.0.40/cgi-bin/" />
+		<constructor-arg name="TTSVoice" value="julie" />
+	</bean>
+	
 </beans>

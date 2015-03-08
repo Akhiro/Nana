@@ -15,14 +15,14 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="* * * * * *" />
+				<constructor-arg value="*/5 * * * * *" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
 			<bean class="com.nana.core.action.ActionSendMessage">
 				<constructor-arg name="message" value="Je t'aime" />
 				<constructor-arg name="api">
-					<ref bean="API-BIDULE"/>
+					<ref bean="API-Karotz"/>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
