@@ -1,5 +1,7 @@
 package com.nana.api.interfaces;
 
-public interface IAPIReturns {
+import com.nana.api.ResponseCodeEnum;
 
+public interface IAPIReturns {
+	public ResponseCodeEnum getResponseCode();
 }

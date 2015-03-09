@@ -47,8 +47,6 @@ public class tools {
 
 		URL _url = new URL(uri.toString().replace("'", "%27"));
 
-		System.out.println("UTF8URL : " + _url.toString());
-
 		return _url;
 	}
 }
