@@ -5,6 +5,7 @@
 */
 package com.nana.api.karotz.functions;
 
+import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class WakeUpKarotz extends FunctionKarotz {
@@ -17,15 +18,15 @@ public class WakeUpKarotz extends FunctionKarotz {
 		_urlEars=beginUrl;
 	}
 
-	public void wakeSilentKarotz() {
-		sendUrlKarotz(_urlEars + _wake + _silent + "1");
+	public APIResponseCodeEnum wakeSilentKarotz() {
+		return sendUrlKarotz(_urlEars + _wake + _silent + "1");
 	}
 
-	public void wakeSoundKarotz() {
-		sendUrlKarotz(_urlEars + _wake + _silent + "0");
+	public APIResponseCodeEnum wakeSoundKarotz() {
+		return sendUrlKarotz(_urlEars + _wake + _silent + "0");
 	}
 
-	public void sleepKarotz() {
-		sendUrlKarotz(_urlEars + _sleep);
+	public APIResponseCodeEnum sleepKarotz() {
+		return sendUrlKarotz(_urlEars + _sleep);
 	}
 }
