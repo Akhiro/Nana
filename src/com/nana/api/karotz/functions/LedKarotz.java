@@ -5,6 +5,7 @@
 */
 package com.nana.api.karotz.functions;
 
+import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class LedKarotz extends FunctionKarotz {
@@ -21,43 +22,43 @@ public class LedKarotz extends FunctionKarotz {
 		_urlLed = beginUrl + _command;
 	}
 
-	public void shutDownLed() {
-		sendUrlKarotz(_urlLed + _color + "000000");
+	public APIResponseCodeEnum shutDownLed() {
+		return sendUrlKarotz(_urlLed + _color + "000000");
 	}
 
-	public void fixedSavedLed(final String primaryColor) {
-		sendUrlKarotz(_urlLed + _color + primaryColor  +
+	public APIResponseCodeEnum fixedSavedLed(final String primaryColor) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor  +
 										"&" + _noMemory + "0");
 	}
 
-	public void pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
-		sendUrlKarotz(_urlLed + _color + primaryColor +
+	public APIResponseCodeEnum pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor +
 										"&" + _pulse + "1" +
 										"&" + _speed + formatSpeed(speedPulse) +
 										"&" + _noMemory + "0");
 	}
 
-	public void pulseTwoColorSavedLed(final String primaryColor, final String secondColor, final int speedPulse) {
-		sendUrlKarotz(_urlLed + _color + primaryColor + "&" + _color2 + secondColor +
+	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor, final int speedPulse) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor + "&" + _color2 + secondColor +
 										"&" + _pulse + "1" +
 										"&" + _speed + formatSpeed(speedPulse) +
 										"&" + _noMemory + "0");
 	}
 
-	public void fixedTemporaryLed(final String primaryColor) {
-		sendUrlKarotz(_urlLed + _color + primaryColor  +
+	public APIResponseCodeEnum fixedTemporaryLed(final String primaryColor) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor  +
 										"&" + _noMemory + "1");
 	}
 
-	public void pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
-		sendUrlKarotz(_urlLed + _color + primaryColor +
+	public APIResponseCodeEnum pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor +
 										"&" + _pulse + "1" +
 										"&" + _speed + formatSpeed(speedPulse) +
 										"&" + _noMemory + "1");
 	}
 
-	public void pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse) {
-		sendUrlKarotz(_urlLed + _color + primaryColor + "&" + _color2 + secondColor +
+	public APIResponseCodeEnum pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse) {
+		return sendUrlKarotz(_urlLed + _color + primaryColor + "&" + _color2 + secondColor +
 										"&" + _pulse + "1" +
 										"&" + _speed + formatSpeed(speedPulse) +
 										"&" + _noMemory + "1");

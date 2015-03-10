@@ -37,4 +37,8 @@ public interface IAPIKarotz extends IAPISendMessage {
 	public APIResponseCodeEnum randomMoodKarotz();
 
 	public APIResponseCodeEnum moodKarotz(final int mood);
+
+	public APIResponseCodeEnum currentHourKarotz();
+
+	public APIResponseCodeEnum chosenHourKarotz(final int hour);
 }

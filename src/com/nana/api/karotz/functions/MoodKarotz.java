@@ -7,6 +7,7 @@ package com.nana.api.karotz.functions;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class MoodKarotz extends FunctionKarotz {
@@ -18,16 +19,16 @@ public class MoodKarotz extends FunctionKarotz {
 		_urlTTS = beginUrl + _loc + _command;
 	}
 
-	public void randomMoodKarotz() {
-		sendUrlKarotz(_urlTTS);
+	public APIResponseCodeEnum randomMoodKarotz() {
+		return sendUrlKarotz(_urlTTS);
 	}
 
-	public void moodKarotz(final int mood) {
+	public APIResponseCodeEnum moodKarotz(final int mood) {
 		String strMood = Integer.toString(mood % 21);
 		if (mood == 0 % 21) {
 			strMood = "11";
 		}
 
-		sendUrlKarotz(_urlTTS + "?id=" + strMood);
+		return sendUrlKarotz(_urlTTS + "?id=" + strMood);
 	}
 }

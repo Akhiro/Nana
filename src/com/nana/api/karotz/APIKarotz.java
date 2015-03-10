@@ -3,6 +3,7 @@ package com.nana.api.karotz;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.api.APIResponseCodeEnum;
+import com.nana.api.karotz.functions.ClockKarotz;
 import com.nana.api.karotz.functions.EarsKarotz;
 import com.nana.api.karotz.functions.LedKarotz;
 import com.nana.api.karotz.functions.MoodKarotz;
@@ -17,6 +18,7 @@ public class APIKarotz implements IAPIKarotz {
 	private final LedKarotz _led;
 	private final WakeUpKarotz _wake;
 	private final MoodKarotz _mood;
+	private final ClockKarotz _clock;
 
 	public APIKarotz(final String beginUrl, final String TTSVoice) {
 		_beginUrl = beginUrl;
@@ -27,6 +29,7 @@ public class APIKarotz implements IAPIKarotz {
 		_led = new LedKarotz(beginUrl);
 		_wake = new WakeUpKarotz(beginUrl);
 		_mood = new MoodKarotz(beginUrl);
+		_clock = new ClockKarotz(beginUrl);
 	}
 
 	@Override
@@ -36,105 +39,98 @@ public class APIKarotz implements IAPIKarotz {
 
 	@Override
 	public APIResponseCodeEnum enableEars() {
-		_ears.enableEars();
-		return null;
+		return _ears.enableEars();
 	}
 
 	@Override
 	public APIResponseCodeEnum disableEars() {
-		_ears.disableEars();
-		return null;
+		return _ears.disableEars();
 	}
 
 	@Override
 	public APIResponseCodeEnum resetPositionEars() {
-		_ears.resetPositionEars();
-		return null;
+		return _ears.resetPositionEars();
 	}
 
 	@Override
 	public APIResponseCodeEnum randomPositionEars() {
-		_ears.randomPositionEars();
-		return null;
+		return _ears.randomPositionEars();
 	}
 
 	@Override
 	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition) {
-		_ears.moveEars(leftPosition, rightPosition);
-		return null;
+		return _ears.moveEars(leftPosition, rightPosition);
 	}
 
 	@Override
 	public APIResponseCodeEnum shutDownLed() {
-		_led.shutDownLed();
-		return null;
+		return _led.shutDownLed();
 	}
 
 	@Override
 	public APIResponseCodeEnum fixedSavedLed(final String primaryColor) {
-		_led.fixedSavedLed(primaryColor);
-		return null;
+		return _led.fixedSavedLed(primaryColor);
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
-		_led.pulseOneColorSavedLed(primaryColor, speedPulse);
-		return null;
+		return _led.pulseOneColorSavedLed(primaryColor, speedPulse);
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor,
 			final int speedPulse) {
-		_led.pulseTwoColorSavedLed(primaryColor, secondColor, speedPulse);
-		return null;
+		return _led.pulseTwoColorSavedLed(primaryColor, secondColor, speedPulse);
 	}
 
 	@Override
 	public APIResponseCodeEnum fixedTemporaryLed(final String primaryColor) {
-		_led.fixedTemporaryLed(primaryColor);
-		return null;
+		return _led.fixedTemporaryLed(primaryColor);
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
-		_led.pulseOneColorTemporaryLed(primaryColor, speedPulse);
-		return null;
+		return _led.pulseOneColorTemporaryLed(primaryColor, speedPulse);
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse) {
-		_led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
-		return null;
+		return _led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
 	}
 
 	@Override
 	public APIResponseCodeEnum wakeSilentKarotz() {
-		_wake.wakeSilentKarotz();
-		return null;
+		return _wake.wakeSilentKarotz();
 	}
 
 	@Override
 	public APIResponseCodeEnum wakeSoundKarotz() {
-		_wake.wakeSoundKarotz();
-		return null;
+		return _wake.wakeSoundKarotz();
 	}
 
 	@Override
 	public APIResponseCodeEnum sleepKarotz() {
-		_wake.sleepKarotz();
-		return null;
+		return _wake.sleepKarotz();
 	}
 
 	@Override
 	public APIResponseCodeEnum randomMoodKarotz() {
-		_mood.randomMoodKarotz();
-		return null;
+		return _mood.randomMoodKarotz();
 	}
 
 	@Override
 	public APIResponseCodeEnum moodKarotz(final int mood) {
-		_mood.moodKarotz(mood);
-		return null;
+		return _mood.moodKarotz(mood);
+	}
+
+	@Override
+	public APIResponseCodeEnum currentHourKarotz() {
+		return _clock.currentHourKarotz();
+	}
+
+	@Override
+	public APIResponseCodeEnum chosenHourKarotz(final int hour) {
+		return _clock.chosenHourKarotz(hour);
 	}
 
 }
