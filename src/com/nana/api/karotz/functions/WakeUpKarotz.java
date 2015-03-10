@@ -5,9 +5,9 @@
 */
 package com.nana.api.karotz.functions;
 
-import com.nana.api.karotz.BaseKarotz;
+import com.nana.api.karotz.FunctionKarotz;
 
-public class WakeUpKarotz extends BaseKarotz{
+public class WakeUpKarotz extends FunctionKarotz {
 	private final String _urlEars;
 	private final String _wake = "wakeup?";
 	private final String _sleep = "sleep";

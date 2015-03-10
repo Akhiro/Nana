@@ -13,12 +13,27 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.nana.core.state.interfaces.IState;
 import com.nana.core.trigger.interfaces.ITrigger;
 
-public abstract class State<T> implements IState<T> {
-
+public class State<T> implements IState<T> {
+	@NonNull private T _state;
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
-	public State() {
-		super();
+	public State(@NonNull final T value) {
+		_state = value;
+	}
+
+	@Override
+	public void setState(@NonNull final T value) {
+		if (!_state.equals(value)) {
+			_state = value;
+
+			/** On notifie que l'etat a changé a tous les triggers **/
+			notifyObservers();
+		}
+	}
+
+	@Override
+	public boolean isValid(@NonNull final T value) {
+		return _state.equals(value);
 	}
 
 	@Override
@@ -34,5 +49,10 @@ public abstract class State<T> implements IState<T> {
 	@Override
 	public void notifyObservers() {
 		_triggers.stream().forEach(trigger -> trigger.notif());
+	}
+
+	@Override
+	public boolean isAssignableFrom(final Class<?> clazz) {
+		return _state.getClass().isAssignableFrom(clazz);
 	}
 }

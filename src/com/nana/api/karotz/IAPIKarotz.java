@@ -1,40 +1,40 @@
 package com.nana.api.karotz;
 
-import com.nana.api.interfaces.IAPIReturns;
+import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.interfaces.IAPISendMessage;
 
 public interface IAPIKarotz extends IAPISendMessage {
-	public IAPIReturns enableEars();
+	public APIResponseCodeEnum enableEars();
 
-	public IAPIReturns disableEars();
+	public APIResponseCodeEnum disableEars();
 
-	public IAPIReturns resetPositionEars();
+	public APIResponseCodeEnum resetPositionEars();
 
-	public IAPIReturns randomPositionEars();
+	public APIResponseCodeEnum randomPositionEars();
 
-	public IAPIReturns moveEars(final int leftPosition, final int rightPosition);
+	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition);
 
-	public IAPIReturns shutDownLed();
+	public APIResponseCodeEnum shutDownLed();
 
-	public IAPIReturns fixedSavedLed(final String primaryColor);
+	public APIResponseCodeEnum fixedSavedLed(final String primaryColor);
 
-	public IAPIReturns pulseOneColorSavedLed(final String primaryColor, final int speedPulse);
+	public APIResponseCodeEnum pulseOneColorSavedLed(final String primaryColor, final int speedPulse);
 
-	public IAPIReturns pulseTwoColorSavedLed(final String primaryColor, final String secondColor, final int speedPulse);
+	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor, final int speedPulse);
 
-	public IAPIReturns fixedTemporaryLed(final String primaryColor);
+	public APIResponseCodeEnum fixedTemporaryLed(final String primaryColor);
 
-	public IAPIReturns pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse);
+	public APIResponseCodeEnum pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse);
 
-	public IAPIReturns pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse);
+	public APIResponseCodeEnum pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse);
 
-	public IAPIReturns wakeSilentKarotz();
+	public APIResponseCodeEnum wakeSilentKarotz();
 
-	public IAPIReturns wakeSoundKarotz();
+	public APIResponseCodeEnum wakeSoundKarotz();
 
-	public IAPIReturns sleepKarotz();
+	public APIResponseCodeEnum sleepKarotz();
 
-	public IAPIReturns randomMoodKarotz();
+	public APIResponseCodeEnum randomMoodKarotz();
 
-	public IAPIReturns moodKarotz(final int mood);
+	public APIResponseCodeEnum moodKarotz(final int mood);
 }

@@ -5,9 +5,10 @@
 */
 package com.nana.api.karotz.functions;
 
-import com.nana.api.karotz.BaseKarotz;
+import com.nana.api.APIResponseCodeEnum;
+import com.nana.api.karotz.FunctionKarotz;
 
-public class EarsKarotz extends BaseKarotz {
+public class EarsKarotz extends FunctionKarotz {
 	private final String _urlEars;
 	private final String _commandSystem = "ears_mode?";
 	private final String _commandEars = "ears?";
@@ -21,26 +22,26 @@ public class EarsKarotz extends BaseKarotz {
 		_urlEars=beginUrl;
 	}
 
-	public void enableEars() {
-		sendUrlKarotz(_urlEars + _commandSystem + _disable + "0&_=1425934323506");
+	public APIResponseCodeEnum enableEars() {
+		return sendUrlKarotz(_urlEars + _commandSystem + _disable + "0&_=1425934323506");
 	}
 
-	public void disableEars() {
-		sendUrlKarotz(_urlEars + _commandSystem + _disable + "1&_=1425934323506");
+	public APIResponseCodeEnum disableEars() {
+		return sendUrlKarotz(_urlEars + _commandSystem + _disable + "1&_=1425934323506");
 	}
 
-	public void resetPositionEars() {
-		sendUrlKarotz(_urlEars + _reset);
+	public APIResponseCodeEnum resetPositionEars() {
+		return sendUrlKarotz(_urlEars + _reset);
 	}
 
-	public void randomPositionEars() {
-		sendUrlKarotz(_urlEars + _random);
+	public APIResponseCodeEnum randomPositionEars() {
+		return sendUrlKarotz(_urlEars + _random);
 	}
 
-	public void moveEars(final int leftPosition, final int rightPosition) {
+	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition) {
 		String strLeft = Integer.toString(leftPosition % 17);
 		String strRight = Integer.toString(rightPosition % 17);
 
-		sendUrlKarotz(_urlEars + _commandEars + _left + strLeft + "&" + _right + strRight);
+		return sendUrlKarotz(_urlEars + _commandEars + _left + strLeft + "&" + _right + strRight);
 	}
 }

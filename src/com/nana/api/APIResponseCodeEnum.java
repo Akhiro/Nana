@@ -5,8 +5,8 @@
 */
 package com.nana.api;
 
-public enum ResponseCodeEnum {
+public enum APIResponseCodeEnum {
 	SUCCESS,
 	TIMEOUT,
-	DISCONNECT;
+	ERROR;
 }

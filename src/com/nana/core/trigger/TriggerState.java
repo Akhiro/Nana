@@ -7,7 +7,7 @@ package com.nana.core.trigger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.TriggerRegistererManager;
+import com.nana.core.manager.TriggerRegistererManager;
 import com.nana.core.validator.interfaces.IValidator;
 
 public class TriggerState extends Trigger {

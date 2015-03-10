@@ -2,7 +2,7 @@ package com.nana.api.karotz;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.api.interfaces.IAPIReturns;
+import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.functions.EarsKarotz;
 import com.nana.api.karotz.functions.LedKarotz;
 import com.nana.api.karotz.functions.MoodKarotz;
@@ -30,111 +30,109 @@ public class APIKarotz implements IAPIKarotz {
 	}
 
 	@Override
-	public IAPIReturns sendMessage(@NonNull final String message) {
-		_tts.sendMessageTTSNow(message);
-		return null;
+	public APIResponseCodeEnum sendMessage(@NonNull final String message) {
+		return _tts.sendMessageTTSNow(message);
 	}
 
 	@Override
-	public IAPIReturns enableEars() {
+	public APIResponseCodeEnum enableEars() {
 		_ears.enableEars();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns disableEars() {
+	public APIResponseCodeEnum disableEars() {
 		_ears.disableEars();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns resetPositionEars() {
+	public APIResponseCodeEnum resetPositionEars() {
 		_ears.resetPositionEars();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns randomPositionEars() {
+	public APIResponseCodeEnum randomPositionEars() {
 		_ears.randomPositionEars();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns moveEars(final int leftPosition, final int rightPosition) {
+	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition) {
 		_ears.moveEars(leftPosition, rightPosition);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns shutDownLed() {
+	public APIResponseCodeEnum shutDownLed() {
 		_led.shutDownLed();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns fixedSavedLed(final String primaryColor) {
+	public APIResponseCodeEnum fixedSavedLed(final String primaryColor) {
 		_led.fixedSavedLed(primaryColor);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
+	public APIResponseCodeEnum pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
 		_led.pulseOneColorSavedLed(primaryColor, speedPulse);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns pulseTwoColorSavedLed(final String primaryColor, final String secondColor,
+	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor,
 			final int speedPulse) {
 		_led.pulseTwoColorSavedLed(primaryColor, secondColor, speedPulse);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns fixedTemporaryLed(final String primaryColor) {
+	public APIResponseCodeEnum fixedTemporaryLed(final String primaryColor) {
 		_led.fixedTemporaryLed(primaryColor);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
+	public APIResponseCodeEnum pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
 		_led.pulseOneColorTemporaryLed(primaryColor, speedPulse);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns pulseTwoColorTemporaryLed(final String primaryColor,
-			final String secondColor, final int speedPulse) {
+	public APIResponseCodeEnum pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse) {
 		_led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
 		return null;
 	}
 
 	@Override
-	public IAPIReturns wakeSilentKarotz() {
+	public APIResponseCodeEnum wakeSilentKarotz() {
 		_wake.wakeSilentKarotz();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns wakeSoundKarotz() {
+	public APIResponseCodeEnum wakeSoundKarotz() {
 		_wake.wakeSoundKarotz();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns sleepKarotz() {
+	public APIResponseCodeEnum sleepKarotz() {
 		_wake.sleepKarotz();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns randomMoodKarotz() {
+	public APIResponseCodeEnum randomMoodKarotz() {
 		_mood.randomMoodKarotz();
 		return null;
 	}
 
 	@Override
-	public IAPIReturns moodKarotz(final int mood) {
+	public APIResponseCodeEnum moodKarotz(final int mood) {
 		_mood.moodKarotz(mood);
 		return null;
 	}

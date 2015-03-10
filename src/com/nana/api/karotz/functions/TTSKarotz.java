@@ -1,8 +1,9 @@
 package com.nana.api.karotz.functions;
 
-import com.nana.api.karotz.BaseKarotz;
+import com.nana.api.APIResponseCodeEnum;
+import com.nana.api.karotz.FunctionKarotz;
 
-public class TTSKarotz extends BaseKarotz {
+public class TTSKarotz extends FunctionKarotz {
 
 	private final String _urlTTS;
 	private final String _command = "tts?";
@@ -15,7 +16,7 @@ public class TTSKarotz extends BaseKarotz {
 		_urlTTS=beginUrl + _command + _voice + TTSVoice + _text;
 	}
 
-	public void sendMessageTTSNow(final String message){
-		sendUrlKarotz(_urlTTS + message + _nocache + "0" + _mute + "0");
+	public APIResponseCodeEnum sendMessageTTSNow(final String message){
+		return sendUrlKarotz(_urlTTS + message + _nocache + "0" + _mute + "0");
 	}
 }

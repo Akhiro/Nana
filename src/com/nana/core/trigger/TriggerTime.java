@@ -7,7 +7,7 @@ package com.nana.core.trigger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.core.TriggerRegistererManager;
+import com.nana.core.manager.TriggerRegistererManager;
 
 public class TriggerTime extends Trigger {
 	/** @param period Temps(ms) entre deux proc du Trigger **/

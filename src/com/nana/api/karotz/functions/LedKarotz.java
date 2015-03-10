@@ -5,9 +5,9 @@
 */
 package com.nana.api.karotz.functions;
 
-import com.nana.api.karotz.BaseKarotz;
+import com.nana.api.karotz.FunctionKarotz;
 
-public class LedKarotz extends BaseKarotz {
+public class LedKarotz extends FunctionKarotz {
 	private final String _urlLed;
 	private final String _command = "leds?";
 	private final String _color = "color=";

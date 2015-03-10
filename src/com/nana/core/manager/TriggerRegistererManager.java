@@ -3,7 +3,7 @@
  * Author(s) : jsdidierlaurent
  * Date : 7 mars 2015
  */
-package com.nana.core;
+package com.nana.core.manager;
 
 import java.util.Date;
 
@@ -37,7 +37,7 @@ public class TriggerRegistererManager {
 	}
 
 	/** Ajout des element que le Trigger Manager a besoin pour fonctionner **/
-	public void setTaskScheduler(@NonNull final ThreadPoolTaskScheduler taskScheduler) {
+	public void setTaskScheduler(final ThreadPoolTaskScheduler taskScheduler) {
 		_taskScheduler = taskScheduler;
 	}
 

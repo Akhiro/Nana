@@ -3,7 +3,7 @@
  * Author(s) : jsdidierlaurent
  * Date : 7 mars 2015
  */
-package com.nana.utils.file;
+package com.nana.utils;
 
 import java.io.File;
 import java.io.IOException;

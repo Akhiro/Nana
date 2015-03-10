@@ -5,10 +5,12 @@
 */
 package com.nana.api.karotz.functions;
 
-import com.nana.api.karotz.BaseKarotz;
+import org.eclipse.jdt.annotation.NonNull;
 
-public class MoodKarotz extends BaseKarotz {
-	private final String _urlTTS;
+import com.nana.api.karotz.FunctionKarotz;
+
+public class MoodKarotz extends FunctionKarotz {
+	@NonNull private final String _urlTTS;
 	private final String _loc = "apps/";
 	private final String _command = "moods";
 

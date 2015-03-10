@@ -12,5 +12,6 @@
 	<!-- AJOUTER LES MODULES A CHARGER ICI -->
 	<util:list id="modules">
 	    <value>conf/application/modules/module-test.xml</value>
+	    <value>conf/application/modules/module-test2.xml</value>
 	</util:list>
 </beans>
