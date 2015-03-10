@@ -7,7 +7,37 @@ public class ApiNana {
 
 	public static void main(final String[] args) throws Exception {
 		//testEarsKarotz();
-		testLedKarotz();
+		//testLedKarotz();
+		//testWakeUpKarotz();
+		testMoodKarotz();
+	}
+
+	public static void testMoodKarotz() throws InterruptedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		api.randomMoodKarotz();
+		Thread.sleep(3000);
+		api.moodKarotz(5);
+		Thread.sleep(3000);
+		api.moodKarotz(65);
+		Thread.sleep(3000);
+		api.moodKarotz(0);
+	}
+
+	public static void testWakeUpKarotz() throws InterruptedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		api.sendMessage("Bonne nuit !");
+		Thread.sleep(3000);
+		api.sleepKarotz();
+		Thread.sleep(3000);
+		api.wakeSilentKarotz();
+		Thread.sleep(3000);
+		api.sendMessage("M'avez-vous entendu ?");
+		Thread.sleep(3000);
+		api.sendMessage("Bonne nuit !");
+		Thread.sleep(3000);
+		api.sleepKarotz();
+		Thread.sleep(3000);
+		api.wakeSoundKarotz();
 	}
 
 	public static void testEarsKarotz() throws InterruptedException {

@@ -27,4 +27,14 @@ public interface IAPIKarotz extends IAPISendMessage {
 	public IAPIReturns pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse);
 
 	public IAPIReturns pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse);
+
+	public IAPIReturns wakeSilentKarotz();
+
+	public IAPIReturns wakeSoundKarotz();
+
+	public IAPIReturns sleepKarotz();
+
+	public IAPIReturns randomMoodKarotz();
+
+	public IAPIReturns moodKarotz(final int mood);
 }

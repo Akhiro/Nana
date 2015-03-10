@@ -5,7 +5,9 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.nana.api.interfaces.IAPIReturns;
 import com.nana.api.karotz.functions.EarsKarotz;
 import com.nana.api.karotz.functions.LedKarotz;
+import com.nana.api.karotz.functions.MoodKarotz;
 import com.nana.api.karotz.functions.TTSKarotz;
+import com.nana.api.karotz.functions.WakeUpKarotz;
 
 public class APIKarotz implements IAPIKarotz {
 	private final String _beginUrl;
@@ -13,6 +15,8 @@ public class APIKarotz implements IAPIKarotz {
 	private final TTSKarotz _tts;
 	private final EarsKarotz _ears;
 	private final LedKarotz _led;
+	private final WakeUpKarotz _wake;
+	private final MoodKarotz _mood;
 
 	public APIKarotz(final String beginUrl, final String TTSVoice) {
 		_beginUrl = beginUrl;
@@ -21,6 +25,8 @@ public class APIKarotz implements IAPIKarotz {
 		_tts = new TTSKarotz(_beginUrl, _TTSVoice);
 		_ears = new EarsKarotz(beginUrl);
 		_led = new LedKarotz(beginUrl);
+		_wake = new WakeUpKarotz(beginUrl);
+		_mood = new MoodKarotz(beginUrl);
 	}
 
 	@Override
@@ -100,6 +106,36 @@ public class APIKarotz implements IAPIKarotz {
 	public IAPIReturns pulseTwoColorTemporaryLed(final String primaryColor,
 			final String secondColor, final int speedPulse) {
 		_led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
+		return null;
+	}
+
+	@Override
+	public IAPIReturns wakeSilentKarotz() {
+		_wake.wakeSilentKarotz();
+		return null;
+	}
+
+	@Override
+	public IAPIReturns wakeSoundKarotz() {
+		_wake.wakeSoundKarotz();
+		return null;
+	}
+
+	@Override
+	public IAPIReturns sleepKarotz() {
+		_wake.sleepKarotz();
+		return null;
+	}
+
+	@Override
+	public IAPIReturns randomMoodKarotz() {
+		_mood.randomMoodKarotz();
+		return null;
+	}
+
+	@Override
+	public IAPIReturns moodKarotz(final int mood) {
+		_mood.moodKarotz(mood);
 		return null;
 	}
 
