@@ -19,15 +19,11 @@
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.ActionChangeState">
+			<bean class="com.nana.core.action.wrapper.ActionChangeStateBoolean">
 				<constructor-arg name="state">
 					<ref bean="CéliaEstConnectée"/>
 				</constructor-arg>
-				<constructor-arg name="value">
-					<bean class="java.lang.Boolean">
-						<constructor-arg value="true"/>
-					</bean>
-				</constructor-arg>
+				<constructor-arg name="value" type="Boolean" value="true"/>
 			</bean>
 		</constructor-arg>
 	</bean>

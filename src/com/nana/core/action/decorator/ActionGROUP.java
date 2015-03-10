@@ -5,18 +5,22 @@
  */
 package com.nana.core.action.decorator;
 
+import java.util.Arrays;
+
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.core.action.interfaces.IAction;
 
 public class ActionGROUP implements IAction {
+	@NonNull private final IAction[] _actions;
 
-	public ActionGROUP() {
-		// TODO Auto-generated constructor stub
+	public ActionGROUP(@NonNull final IAction ... actions) {
+		_actions = actions;
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-
+		Arrays.stream(_actions).forEach(action -> action.execute());
 	}
 
 }

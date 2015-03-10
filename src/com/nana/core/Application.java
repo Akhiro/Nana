@@ -3,7 +3,7 @@
  * Author(s) : jsdidierlaurent
  * Date : 7 mars 2015
  */
-package com.nana;
+package com.nana.core;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -53,36 +53,40 @@ public class Application extends Thread {
 						cleanConfiguration();
 					}
 
-					/** Chargement du contexte de gestion des Thread **/
-					logger.info("Chargement du fichier de configuration du scheduler : " + SCHEDULER_CONFIGURATION_FILE_PATH);
-					_schedulerContext = new FileSystemXmlApplicationContext(SCHEDULER_CONFIGURATION_FILE_PATH);
-					addConfigurationFileMD5(SCHEDULER_CONFIGURATION_FILE_PATH);
+					try {
+						/** Chargement du contexte de gestion des Thread **/
+						logger.info("Chargement du fichier de configuration du scheduler : " + SCHEDULER_CONFIGURATION_FILE_PATH);
+						_schedulerContext = new FileSystemXmlApplicationContext(SCHEDULER_CONFIGURATION_FILE_PATH);
+						addConfigurationFileMD5(SCHEDULER_CONFIGURATION_FILE_PATH);
 
-					/** Chargement du contexte contenant la listes des modules **/
-					logger.info("Chargement du fichier de configuration des modules : " + MODULES_CONFIGURATION_FILE_PATH);
-					_modulesListContext = new FileSystemXmlApplicationContext(MODULES_CONFIGURATION_FILE_PATH);
-					addConfigurationFileMD5(MODULES_CONFIGURATION_FILE_PATH);
+						/** Chargement du contexte contenant la listes des modules **/
+						logger.info("Chargement du fichier de configuration des modules : " + MODULES_CONFIGURATION_FILE_PATH);
+						_modulesListContext = new FileSystemXmlApplicationContext(MODULES_CONFIGURATION_FILE_PATH);
+						addConfigurationFileMD5(MODULES_CONFIGURATION_FILE_PATH);
 
-					/** On passe aux managers les infos qu'ils ont besoin **/
-					_scheduler = _schedulerContext.getBean(ThreadPoolTaskScheduler.class);
-					TriggerRegistererManager.getInstance().setTaskScheduler(_scheduler);
+						/** On passe aux managers les infos qu'ils ont besoin **/
+						_scheduler = _schedulerContext.getBean(ThreadPoolTaskScheduler.class);
+						TriggerRegistererManager.getInstance().setTaskScheduler(_scheduler);
 
-					/** On charge la list des modules et on les charges a la suite **/
-					List<String> modulesReady = new ArrayList<String>();
-					for (String module : (List<String>) _modulesListContext.getBean("modules")) {
-						logger.info("Chargement du fichier de configuration du module : " + module);
-						if (Paths.get(module).toFile().exists()) {
-							modulesReady.add(module);
-							addConfigurationFileMD5(module);
-						} else {
-							logger.error(" - Chargement du module impossible, le fichier n'existe pas : " + module);
+						/** On charge la list des modules et on les charges a la suite **/
+						List<String> modulesReady = new ArrayList<String>();
+						for (String module : (List<String>) _modulesListContext.getBean("modules")) {
+							logger.info("Chargement du fichier de configuration du module : " + module);
+							if (Paths.get(module).toFile().exists()) {
+								modulesReady.add(module);
+								addConfigurationFileMD5(module);
+							} else {
+								logger.error(" - Chargement du module impossible, le fichier n'existe pas : " + module);
+							}
 						}
+						_modulesContext = new FileSystemXmlApplicationContext(modulesReady.toArray(new String[modulesReady.size()]));
+
+						addConfigurationFileMD5(COMMON_CONFIGURATION_FILE_PATH);
+
+						isStarted = true;
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					_modulesContext = new FileSystemXmlApplicationContext(modulesReady.toArray(new String[modulesReady.size()]));
-
-					addConfigurationFileMD5(COMMON_CONFIGURATION_FILE_PATH);
-
-					isStarted = true;
 				}
 
 				Thread.sleep(5000);

@@ -16,15 +16,11 @@
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerState">
 				<constructor-arg>
-					<bean class="com.nana.core.validator.Validator">
+					<bean class="com.nana.core.validator.wrapper.ValidatorBoolean">
 						<constructor-arg name="state">
 							<ref bean="CéliaEstConnectée"/>
 						</constructor-arg>
-						<constructor-arg name="value">
-							<bean class="java.lang.Boolean">
-								<constructor-arg value="true"/>
-							</bean>
-						</constructor-arg>
+						<constructor-arg name="value" type="Boolean" value="true"/>
 					</bean>
 				</constructor-arg>
 			</bean>
