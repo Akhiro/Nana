@@ -3,6 +3,7 @@ package com.nana.api.karotz;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.api.APIResponseCodeEnum;
+import com.nana.api.karotz.functions.ClockKarotz;
 import com.nana.api.karotz.functions.EarsKarotz;
 import com.nana.api.karotz.functions.LedKarotz;
 import com.nana.api.karotz.functions.MoodKarotz;
@@ -17,6 +18,7 @@ public class APIKarotz implements IAPIKarotz {
 	private final LedKarotz _led;
 	private final WakeUpKarotz _wake;
 	private final MoodKarotz _mood;
+	private final ClockKarotz _clock;
 
 	public APIKarotz(final String beginUrl, final String TTSVoice) {
 		_beginUrl = beginUrl;
@@ -27,6 +29,7 @@ public class APIKarotz implements IAPIKarotz {
 		_led = new LedKarotz(beginUrl);
 		_wake = new WakeUpKarotz(beginUrl);
 		_mood = new MoodKarotz(beginUrl);
+		_clock = new ClockKarotz(beginUrl);
 	}
 
 	@Override
@@ -118,6 +121,16 @@ public class APIKarotz implements IAPIKarotz {
 	@Override
 	public APIResponseCodeEnum moodKarotz(final int mood) {
 		return _mood.moodKarotz(mood);
+	}
+
+	@Override
+	public APIResponseCodeEnum currentHourKarotz() {
+		return _clock.currentHourKarotz();
+	}
+
+	@Override
+	public APIResponseCodeEnum chosenHourKarotz(final int hour) {
+		return _clock.chosenHourKarotz(hour);
 	}
 
 }

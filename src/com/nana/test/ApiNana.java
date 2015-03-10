@@ -9,7 +9,17 @@ public class ApiNana {
 		//testEarsKarotz();
 		//testLedKarotz();
 		//testWakeUpKarotz();
-		testMoodKarotz();
+		//testMoodKarotz();
+		testClockKarotz();
+	}
+
+	public static void testClockKarotz() throws InterruptedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		api.currentHourKarotz();
+		Thread.sleep(3000);
+		api.chosenHourKarotz(4);
+		Thread.sleep(3000);
+		api.chosenHourKarotz(95);
 	}
 
 	public static void testMoodKarotz() throws InterruptedException {
