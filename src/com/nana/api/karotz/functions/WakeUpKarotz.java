@@ -9,24 +9,24 @@ import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class WakeUpKarotz extends FunctionKarotz {
-	private final String _urlEars;
+	private final String _urlWakeUp;
 	private final String _wake = "wakeup?";
 	private final String _sleep = "sleep";
 	private final String _silent = "silent=";
 
 	public WakeUpKarotz(final String beginUrl) {
-		_urlEars=beginUrl;
+		_urlWakeUp=beginUrl;
 	}
 
 	public APIResponseCodeEnum wakeSilentKarotz() {
-		return sendUrlKarotz(_urlEars + _wake + _silent + "1");
+		return sendUrlKarotz(_urlWakeUp + _wake + _silent + "1");
 	}
 
 	public APIResponseCodeEnum wakeSoundKarotz() {
-		return sendUrlKarotz(_urlEars + _wake + _silent + "0");
+		return sendUrlKarotz(_urlWakeUp + _wake + _silent + "0");
 	}
 
 	public APIResponseCodeEnum sleepKarotz() {
-		return sendUrlKarotz(_urlEars + _sleep);
+		return sendUrlKarotz(_urlWakeUp + _sleep);
 	}
 }

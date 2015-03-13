@@ -9,22 +9,22 @@ import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class ClockKarotz extends FunctionKarotz {
-	private final String _urlTTS;
+	private final String _urlClock;
 	private final String _loc = "apps/";
 	private final String _command = "clock";
 	private final String _hour = "?hour=";
 
 	public ClockKarotz(final String beginUrl) {
-		_urlTTS = beginUrl + _loc + _command;
+		_urlClock = beginUrl + _loc + _command;
 	}
 
 	public APIResponseCodeEnum currentHourKarotz() {
-		return sendUrlKarotz(_urlTTS);
+		return sendUrlKarotz(_urlClock);
 	}
 
 	public APIResponseCodeEnum chosenHourKarotz(final int hour) {
 		String strHour = Integer.toString(hour % 24);
 
-		return sendUrlKarotz(_urlTTS + _hour + strHour);
+		return sendUrlKarotz(_urlClock + _hour + strHour);
 	}
 }

@@ -1,16 +1,36 @@
 package com.nana.test;
 
+import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.api.karotz.APIKarotz;
-import com.nana.api.karotz.IAPIKarotz;
 
 public class ApiNana {
 
 	public static void main(final String[] args) throws Exception {
+		//podcast > http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3
+
 		//testEarsKarotz();
 		//testLedKarotz();
 		//testWakeUpKarotz();
 		//testMoodKarotz();
-		testClockKarotz();
+		//testClockKarotz();
+		testSoundKarotz();
+	}
+
+	public static void testSoundKarotz() throws InterruptedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		String podcast = "http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3";
+
+		api.specificSoundKarotz("ready");
+		Thread.sleep(3000);
+		api.specificSoundKarotz("RADISCUIT");
+		Thread.sleep(3000);
+		api.urlSoundKarotz(podcast);
+		Thread.sleep(6000);
+		api.pauseSoundKarotz();
+		Thread.sleep(6000);
+		api.pauseSoundKarotz();
+		Thread.sleep(6000);
+		api.quitSoundKarotz();
 	}
 
 	public static void testClockKarotz() throws InterruptedException {

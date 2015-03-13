@@ -1,7 +1,6 @@
-package com.nana.api.karotz;
+package com.nana.api.interfaces;
 
 import com.nana.api.APIResponseCodeEnum;
-import com.nana.api.interfaces.IAPISendMessage;
 
 public interface IAPIKarotz extends IAPISendMessage {
 	public APIResponseCodeEnum enableEars();
@@ -41,4 +40,12 @@ public interface IAPIKarotz extends IAPISendMessage {
 	public APIResponseCodeEnum currentHourKarotz();
 
 	public APIResponseCodeEnum chosenHourKarotz(final int hour);
+
+	public APIResponseCodeEnum specificSoundKarotz(final String sound);
+
+	public APIResponseCodeEnum urlSoundKarotz(final String urlFile);
+
+	public APIResponseCodeEnum pauseSoundKarotz();
+
+	public APIResponseCodeEnum quitSoundKarotz();
 }

@@ -3,10 +3,12 @@ package com.nana.api.karotz;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.api.APIResponseCodeEnum;
+import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.api.karotz.functions.ClockKarotz;
 import com.nana.api.karotz.functions.EarsKarotz;
 import com.nana.api.karotz.functions.LedKarotz;
 import com.nana.api.karotz.functions.MoodKarotz;
+import com.nana.api.karotz.functions.SoundKarotz;
 import com.nana.api.karotz.functions.TTSKarotz;
 import com.nana.api.karotz.functions.WakeUpKarotz;
 
@@ -19,6 +21,7 @@ public class APIKarotz implements IAPIKarotz {
 	private final WakeUpKarotz _wake;
 	private final MoodKarotz _mood;
 	private final ClockKarotz _clock;
+	private final SoundKarotz _sound;
 
 	public APIKarotz(final String beginUrl, final String TTSVoice) {
 		_beginUrl = beginUrl;
@@ -30,6 +33,7 @@ public class APIKarotz implements IAPIKarotz {
 		_wake = new WakeUpKarotz(beginUrl);
 		_mood = new MoodKarotz(beginUrl);
 		_clock = new ClockKarotz(beginUrl);
+		_sound = new SoundKarotz(beginUrl);
 	}
 
 	@Override
@@ -131,6 +135,26 @@ public class APIKarotz implements IAPIKarotz {
 	@Override
 	public APIResponseCodeEnum chosenHourKarotz(final int hour) {
 		return _clock.chosenHourKarotz(hour);
+	}
+
+	@Override
+	public APIResponseCodeEnum specificSoundKarotz(final String sound) {
+		return _sound.specificSoundKarotz(sound);
+	}
+
+	@Override
+	public APIResponseCodeEnum urlSoundKarotz(final String urlFile) {
+		return _sound.urlSoundKarotz(urlFile);
+	}
+
+	@Override
+	public APIResponseCodeEnum pauseSoundKarotz() {
+		return _sound.pauseSoundKarotz();
+	}
+
+	@Override
+	public APIResponseCodeEnum quitSoundKarotz() {
+		return _sound.quitSoundKarotz();
 	}
 
 }

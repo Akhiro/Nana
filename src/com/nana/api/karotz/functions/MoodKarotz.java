@@ -11,16 +11,16 @@ import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class MoodKarotz extends FunctionKarotz {
-	@NonNull private final String _urlTTS;
+	@NonNull private final String _urlMood;
 	private final String _loc = "apps/";
 	private final String _command = "moods";
 
 	public MoodKarotz(final String beginUrl) {
-		_urlTTS = beginUrl + _loc + _command;
+		_urlMood = beginUrl + _loc + _command;
 	}
 
 	public APIResponseCodeEnum randomMoodKarotz() {
-		return sendUrlKarotz(_urlTTS);
+		return sendUrlKarotz(_urlMood);
 	}
 
 	public APIResponseCodeEnum moodKarotz(final int mood) {
@@ -29,6 +29,6 @@ public class MoodKarotz extends FunctionKarotz {
 			strMood = "11";
 		}
 
-		return sendUrlKarotz(_urlTTS + "?id=" + strMood);
+		return sendUrlKarotz(_urlMood + "?id=" + strMood);
 	}
 }
