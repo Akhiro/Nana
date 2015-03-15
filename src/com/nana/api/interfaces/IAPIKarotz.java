@@ -7,9 +7,9 @@ public interface IAPIKarotz extends IAPISendMessage {
 
 	public APIResponseCodeEnum disableEars();
 
-	public APIResponseCodeEnum resetPositionEars();
+	public APIResponseCodeEnum resetEarsPosition();
 
-	public APIResponseCodeEnum randomPositionEars();
+	public APIResponseCodeEnum randomEarsPosition();
 
 	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition);
 

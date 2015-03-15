@@ -78,7 +78,7 @@ public class ApiNana {
 		Thread.sleep(3000);
 		api.sendMessage("Je reset la position de mes oreilles.");
 		Thread.sleep(3000);
-		api.resetPositionEars();
+		api.resetEarsPosition();
 		Thread.sleep(3000);
 		api.sendMessage("Je bouge l'oreille gauche");
 		Thread.sleep(3000);
@@ -88,7 +88,7 @@ public class ApiNana {
 		Thread.sleep(3000);
 		api.sendMessage("Mes oreilles sont HS. J'essaie quand même !");
 		Thread.sleep(3000);
-		api.randomPositionEars();
+		api.randomEarsPosition();
 		Thread.sleep(3000);
 		api.sendMessage("J'active mes oreilles");
 		Thread.sleep(3000);

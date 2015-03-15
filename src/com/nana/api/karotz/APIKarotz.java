@@ -52,13 +52,13 @@ public class APIKarotz implements IAPIKarotz {
 	}
 
 	@Override
-	public APIResponseCodeEnum resetPositionEars() {
-		return _ears.resetPositionEars();
+	public APIResponseCodeEnum resetEarsPosition() {
+		return _ears.resetEarsPosition();
 	}
 
 	@Override
-	public APIResponseCodeEnum randomPositionEars() {
-		return _ears.randomPositionEars();
+	public APIResponseCodeEnum randomEarsPosition() {
+		return _ears.randomEarsPosition();
 	}
 
 	@Override

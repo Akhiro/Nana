@@ -30,11 +30,11 @@ public class EarsKarotz extends FunctionKarotz {
 		return sendUrlKarotz(_urlEars + _commandSystem + _disable + "1&_=1425934323506");
 	}
 
-	public APIResponseCodeEnum resetPositionEars() {
+	public APIResponseCodeEnum resetEarsPosition() {
 		return sendUrlKarotz(_urlEars + _reset);
 	}
 
-	public APIResponseCodeEnum randomPositionEars() {
+	public APIResponseCodeEnum randomEarsPosition() {
 		return sendUrlKarotz(_urlEars + _random);
 	}
 

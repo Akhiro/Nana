@@ -14,7 +14,7 @@ public class ActionSendMessage implements IAction {
 	@NonNull private final String _message;
 	@NonNull private final IAPISendMessage _api;
 
-	public ActionSendMessage(@NonNull final String message, @NonNull final IAPISendMessage api) {
+	public ActionSendMessage(@NonNull final IAPISendMessage api, @NonNull final String message) {
 		_message = message;
 		_api = api;
 	}
