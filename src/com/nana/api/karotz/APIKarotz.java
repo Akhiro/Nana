@@ -42,6 +42,17 @@ public class APIKarotz implements IAPIKarotz {
 	}
 
 	@Override
+	public APIResponseCodeEnum sendMessageTTS(final String message, final int noCache,
+			final int mute) {
+		return _tts.sendMessageTTS(message, noCache, mute);
+	}
+
+	@Override
+	public APIResponseCodeEnum clearCacheTTS() {
+		return _tts.clearCacheTTS();
+	}
+
+	@Override
 	public APIResponseCodeEnum enableEars() {
 		return _ears.enableEars();
 	}

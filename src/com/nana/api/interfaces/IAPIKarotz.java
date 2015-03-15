@@ -48,4 +48,8 @@ public interface IAPIKarotz extends IAPISendMessage {
 	public APIResponseCodeEnum pauseSoundKarotz();
 
 	public APIResponseCodeEnum quitSoundKarotz();
+
+	public APIResponseCodeEnum sendMessageTTS(final String message, final int noCache, final int mute);
+
+	public APIResponseCodeEnum clearCacheTTS();
 }
