@@ -13,6 +13,8 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
 
+import com.nana.core.server.http.HTTPHandler;
+import com.nana.core.server.http.HTTPServer;
 import com.nana.core.trigger.TriggerHTTP;
 import com.nana.core.trigger.TriggerState;
 import com.nana.core.trigger.TriggerTime;
@@ -32,6 +34,7 @@ public class TriggerRegistererManager {
 	static final Logger logger = LogManager.getLogger(TriggerRegistererManager.class.getName());
 
 	private ThreadPoolTaskScheduler _taskScheduler;
+	private HTTPServer _HTTPServer;
 
 	private TriggerRegistererManager() {
 	}
@@ -39,6 +42,10 @@ public class TriggerRegistererManager {
 	/** Ajout des element que le Trigger Manager a besoin pour fonctionner **/
 	public void setTaskScheduler(final ThreadPoolTaskScheduler taskScheduler) {
 		_taskScheduler = taskScheduler;
+	}
+
+	public void setHTTPServer(final HTTPServer HTTPServer) {
+		_HTTPServer = HTTPServer;
 	}
 
 	/** Trigger State Registering **/
@@ -67,7 +74,13 @@ public class TriggerRegistererManager {
 	}
 
 	/** Trigger HTTP Registering **/
-	public void register(@NonNull final TriggerHTTP trigger, @NonNull final String period) {
-		//TODO Seb : Coder les trigger HTTP
+	public void register(@NonNull final TriggerHTTP trigger, @NonNull final String adress) {
+		if (_HTTPServer != null) {
+			_HTTPServer.addContext(adress, new HTTPHandler(trigger));
+			logger.info("Registering : " + trigger.getClass().getSimpleName() + " on ADRESS@(IP" + adress + ")");
+		} else {
+			logger.error("/!\\ Pas de HTTPServer disponnible pour enregister le " + trigger.getClass().getSimpleName());
+		}
 	}
+
 }

@@ -14,16 +14,16 @@
 	<!-- MODULES de TEST -->
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
-			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="*/10 * * * * *" />
+			<bean class="com.nana.core.trigger.TriggerHTTP">
+				<constructor-arg value="/testSeb" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.wrapper.ActionChangeStateBoolean">
-				<constructor-arg name="state">
-					<ref bean="CéliaEstConnectée"/>
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Je t'aime"/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
 				</constructor-arg>
-				<constructor-arg name="value" type="Boolean" value="true"/>
 			</bean>
 		</constructor-arg>
 	</bean>
