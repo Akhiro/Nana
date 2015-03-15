@@ -5,12 +5,14 @@
 */
 package com.nana.core.action.karotz.wake;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
 public class ActionSleep extends ActionKarotz {
 
-	public ActionSleep(final IAPIKarotz api) {
+	public ActionSleep(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 

@@ -5,6 +5,8 @@
 */
 package com.nana.core.action.karotz.led;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
@@ -13,22 +15,22 @@ public class ActionLedSaved extends ActionKarotz {
 	private String _secondColor;
 	private Integer _speedPulse;
 
-	public ActionLedSaved(final IAPIKarotz api) {
+	public ActionLedSaved(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 
-	public ActionLedSaved(final IAPIKarotz api, final String primaryColor) {
+	public ActionLedSaved(@NonNull final IAPIKarotz api, final String primaryColor) {
 		super(api);
 		_primaryColor = primaryColor;
 	}
 
-	public ActionLedSaved(final IAPIKarotz api, final String primaryColor, final int speedPulse) {
+	public ActionLedSaved(@NonNull final IAPIKarotz api, final String primaryColor, final int speedPulse) {
 		super(api);
 		_primaryColor = primaryColor;
 		_speedPulse = speedPulse;
 	}
 
-	public ActionLedSaved(final IAPIKarotz api, final String primaryColor, final String secondColor, final int speedPulse) {
+	public ActionLedSaved(@NonNull final IAPIKarotz api, final String primaryColor, final String secondColor, final int speedPulse) {
 		super(api);
 		_primaryColor = primaryColor;
 		_secondColor = secondColor;

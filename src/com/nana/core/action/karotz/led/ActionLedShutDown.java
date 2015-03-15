@@ -5,11 +5,13 @@
 */
 package com.nana.core.action.karotz.led;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
 public class ActionLedShutDown extends ActionKarotz {
-	public ActionLedShutDown(final IAPIKarotz api) {
+	public ActionLedShutDown(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 

@@ -5,6 +5,8 @@
 */
 package com.nana.core.action.karotz.ears;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
@@ -14,7 +16,7 @@ public class ActionEarsMove extends ActionKarotz {
 	private final int _left;
 	private final int _right;
 
-	public ActionEarsMove(final IAPIKarotz api, final int left, final int right) {
+	public ActionEarsMove(@NonNull final IAPIKarotz api, final int left, final int right) {
 		super(api);
 		_left = left;
 		_right = right;
