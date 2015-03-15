@@ -5,11 +5,13 @@
 */
 package com.nana.api.karotz.functions;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.APIResponseCodeEnum;
 import com.nana.api.karotz.FunctionKarotz;
 
 public class ClockKarotz extends FunctionKarotz {
-	private final String _urlClock;
+	@NonNull private final String _urlClock;
 	private final String _loc = "apps/";
 	private final String _command = "clock";
 	private final String _hour = "?hour=";

@@ -5,10 +5,14 @@
  */
 package com.nana.core.trigger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
+import com.nana.core.manager.TriggerRegistererManager;
+
 public class TriggerHTTP extends Trigger {
-
-	public TriggerHTTP() {
+	public TriggerHTTP(@NonNull final String adress) {
 		super();
-	}
 
+		TriggerRegistererManager.getInstance().register(this, adress);
+	}
 }

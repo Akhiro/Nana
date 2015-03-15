@@ -7,11 +7,20 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	
-	<!-- INITIALISATION -->
+	<!-- INITIALISATION Du SCHEDULER POUR LES TRIGGERS TIME -->
 	<bean id="taskScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
 	     <property name="poolSize" value="10" />
 	     <property name="waitForTasksToCompleteOnShutdown" value="false" />
 	     <property name="threadNamePrefix" value="NANA-POOL-SCHEDULED-THREAD-"/>
     	 <property name="threadGroupName" value="NANA-POOL-SCHEDULER"/>
+	</bean>
+	
+	<!-- INITIALISATION DU THREADPOOL POUR LES TRIGGERS HTTP -->
+	<bean id="httpServer" class="com.nana.core.server.http.HTTPServer">
+	     <property name="poolSize" value="10" />
+	     <property name="threadNamePrefix" value="NANA-POOL-HTTP-THREAD" />
+	     <property name="threadGroupName" value="NANA-POOL-HTTP-SERVER" />
+	     <property name="port" value="8080" />
+		 <property name="idleTimeout" value="10000" />
 	</bean>
 </beans>
