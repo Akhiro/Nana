@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	
+	<import resource="../common.xml"/>
+		
+	<!-- MODULES MOODS -->
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="*/10 * 8-9,18-23 * * MON-FRI" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.decorator.ActionRANDOM">
+							<constructor-arg name="action">
+								<bean class="com.nana.core.action.karotz.mood.ActionMood">
+									<constructor-arg name="api">
+										<ref bean="API-Karotz"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+							<constructor-arg name="minimumDelay" value="2"/>
+							<constructor-arg name="maximumDelay" value="20"/>
+						</bean>
+						<bean class="com.nana.core.action.karotz.ears.ActionEarsRandom">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+						</bean>
+					</list>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 0 10-23 * * SAT,SUN" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.decorator.ActionRANDOM">
+							<constructor-arg name="action">
+								<bean class="com.nana.core.action.karotz.mood.ActionMood">
+									<constructor-arg name="api">
+										<ref bean="API-Karotz"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+							<constructor-arg name="minimumDelay" value="1800"/>
+							<constructor-arg name="maximumDelay" value="3600"/>
+						</bean>
+						<bean class="com.nana.core.action.karotz.ears.ActionEarsRandom">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+						</bean>
+					</list>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -33,6 +33,8 @@ public class Application extends Thread {
 	private AbstractXmlApplicationContext _modulesListContext;
 	private AbstractXmlApplicationContext _modulesContext;
 
+	private ThreadPoolTaskScheduler _scheduler;
+
 	private final HashMap<String, String> _MD5ByFileMap = new HashMap<String, String>();
 
 	public Application() {
@@ -64,8 +66,8 @@ public class Application extends Thread {
 						addConfigurationFileMD5(MODULES_CONFIGURATION_FILE_PATH);
 
 						/** On passe aux managers les infos qu'ils ont besoin **/
-						ThreadPoolTaskScheduler scheduler = _threadPoolContext.getBean(ThreadPoolTaskScheduler.class);
-						TriggerRegistererManager.getInstance().setTaskScheduler(scheduler);
+						_scheduler = _threadPoolContext.getBean(ThreadPoolTaskScheduler.class);
+						TriggerRegistererManager.getInstance().setTaskScheduler(_scheduler);
 
 						HTTPServer httpServer = _threadPoolContext.getBean(HTTPServer.class);
 						TriggerRegistererManager.getInstance().setHTTPServer(httpServer);
@@ -121,6 +123,8 @@ public class Application extends Thread {
 		_threadPoolContext.stop();
 		_modulesListContext.stop();
 		_modulesContext.stop();
+
+		_scheduler.shutdown();
 	}
 
 }

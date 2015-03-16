@@ -12,5 +12,6 @@
 	<!-- AJOUTER LES MODULES A CHARGER ICI -->
 	<util:list id="modules">
 	    <value>conf/application/modules/module-clock.xml</value>
+	    <value>conf/application/modules/module-mood.xml</value>
 	</util:list>
 </beans>

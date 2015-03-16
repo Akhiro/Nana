@@ -15,7 +15,22 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 0 8-23 * * *" />
+				<constructor-arg value="0 0 8-9,18-23 * * MON-FRI" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.karotz.hour.ActionHour">
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 0 10-23 * * SAT,SUN" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
