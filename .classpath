@@ -14,6 +14,11 @@
 	<classpathentry kind="lib" path="lib/jetty/servlet-api-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jetty/jetty-util-9.3.0.M2.jar"/>
 	<classpathentry kind="lib" path="lib/jetty/jetty-io-9.3.0.M2.jar"/>
+	<classpathentry kind="lib" path="lib/feed4j/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/feed4j/feed4j.jar"/>
+	<classpathentry kind="lib" path="lib/feed4j/nekohtml.jar"/>
+	<classpathentry kind="lib" path="lib/feed4j/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/feed4j/xml-apis.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
