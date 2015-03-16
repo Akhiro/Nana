@@ -5,6 +5,8 @@
 */
 package com.nana.core.action.karotz.led;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
@@ -14,22 +16,22 @@ public class ActionLedTemporary extends ActionKarotz {
 	private String _secondColor;
 	private Integer _speedPulse;
 
-	public ActionLedTemporary(final IAPIKarotz api) {
+	public ActionLedTemporary(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 
-	public ActionLedTemporary(final IAPIKarotz api, final String primaryColor) {
+	public ActionLedTemporary(@NonNull final IAPIKarotz api, final String primaryColor) {
 		super(api);
 		_primaryColor = primaryColor;
 	}
 
-	public ActionLedTemporary(final IAPIKarotz api, final String primaryColor, final int speedPulse) {
+	public ActionLedTemporary(@NonNull final IAPIKarotz api, final String primaryColor, final int speedPulse) {
 		super(api);
 		_primaryColor = primaryColor;
 		_speedPulse = speedPulse;
 	}
 
-	public ActionLedTemporary(final IAPIKarotz api, final String primaryColor, final String secondColor, final int speedPulse) {
+	public ActionLedTemporary(@NonNull final IAPIKarotz api, final String primaryColor, final String secondColor, final int speedPulse) {
 		super(api);
 		_primaryColor = primaryColor;
 		_secondColor = secondColor;

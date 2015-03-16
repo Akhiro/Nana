@@ -8,9 +8,22 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
-			
-	<!-- AJOUTER LES MODULES A CHARGER ICI -->
-	<util:list id="modules">
-	    <value>conf/application/modules/module-clock.xml</value>
-	</util:list>
+	
+	<import resource="../common.xml"/>
+		
+	<!-- MODULES CLOCK -->
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 0 8-23 * * *" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.karotz.hour.ActionHour">
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
 </beans>

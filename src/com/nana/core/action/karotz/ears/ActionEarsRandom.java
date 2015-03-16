@@ -5,12 +5,14 @@
 */
 package com.nana.core.action.karotz.ears;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
 public class ActionEarsRandom extends ActionKarotz {
 
-	public ActionEarsRandom(final IAPIKarotz api) {
+	public ActionEarsRandom(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 

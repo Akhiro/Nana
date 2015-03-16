@@ -5,6 +5,8 @@
 */
 package com.nana.core.action.karotz.hour;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
@@ -12,11 +14,11 @@ public class ActionHour extends ActionKarotz {
 
 	private Integer _hour;
 
-	public ActionHour(final IAPIKarotz api) {
+	public ActionHour(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 
-	public ActionHour(final IAPIKarotz api, final int hour) {
+	public ActionHour(@NonNull final IAPIKarotz api, final int hour) {
 		super(api);
 		_hour = hour;
 	}

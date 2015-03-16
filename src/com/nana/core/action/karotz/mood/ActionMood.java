@@ -5,6 +5,8 @@
 */
 package com.nana.core.action.karotz.mood;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.core.action.karotz.ActionKarotz;
 
@@ -12,11 +14,11 @@ public class ActionMood extends ActionKarotz {
 
 	private Integer _mood;
 
-	public ActionMood(final IAPIKarotz api) {
+	public ActionMood(@NonNull final IAPIKarotz api) {
 		super(api);
 	}
 
-	public ActionMood(final IAPIKarotz api, final int mood) {
+	public ActionMood(@NonNull final IAPIKarotz api, final int mood) {
 		super(api);
 		_mood = mood;
 	}
