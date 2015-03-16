@@ -1,19 +1,38 @@
 package com.nana.test;
 
+import it.sauronsoftware.feed4j.FeedIOException;
+import it.sauronsoftware.feed4j.FeedXMLParseException;
+import it.sauronsoftware.feed4j.UnsupportedFeedException;
+
+import java.net.MalformedURLException;
+
 import com.nana.api.interfaces.IAPIKarotz;
+import com.nana.api.interfaces.IAPIWeather;
 import com.nana.api.karotz.APIKarotz;
+import com.nana.api.weather.APIWeather;
 
 public class ApiNana {
 
 	public static void main(final String[] args) throws Exception {
 		//podcast > http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3
+		// atmo > http://www.atmo-npdc.fr/component/atmo/?view=indice&format=feed
 
 		//testEarsKarotz();
 		//testLedKarotz();
 		//testWakeUpKarotz();
 		//testMoodKarotz();
 		//testClockKarotz();
-		testSoundKarotz();
+		//testSoundKarotz();
+		testAtmo();
+	}
+
+	public static void testAtmo() throws MalformedURLException, FeedIOException, FeedXMLParseException, UnsupportedFeedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIWeather apiW = new APIWeather();
+
+		String atmo = "L'indice atmo est de " + apiW.getAtmo();
+
+		api.sendMessage(atmo);
 	}
 
 	public static void testSoundKarotz() throws InterruptedException {
