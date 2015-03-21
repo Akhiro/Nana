@@ -33,7 +33,6 @@ public abstract class FunctionKarotz {
 			httpConnect.setRequestMethod("GET");
 
 			resultSendMessage = httpConnect.getInputStream();
-			logger.info("POUF PATAPOUF");
 			logger.info(this.getClass().getSimpleName() + " receive : " + StreamUtils.inputStreamToString(resultSendMessage));
 
 			return APIResponseCodeEnum.SUCCESS;
