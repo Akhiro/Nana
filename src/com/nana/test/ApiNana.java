@@ -10,7 +10,6 @@ import com.nana.api.interfaces.IAPIKarotz;
 import com.nana.api.interfaces.IAPIWeather;
 import com.nana.api.karotz.APIKarotz;
 import com.nana.api.weather.APIWeather;
-import com.nana.core.action.karotz.weather.ActionAtmo;
 
 public class ApiNana {
 
@@ -25,14 +24,6 @@ public class ApiNana {
 		//testClockKarotz();
 		//testSoundKarotz();
 		//testAtmo();
-		testAction();
-	}
-
-	public static void testAction() {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
-		ActionAtmo aAtmo = new ActionAtmo(api);
-
-		aAtmo.execute();
 	}
 
 	public static void testAtmo() throws MalformedURLException, FeedIOException, FeedXMLParseException, UnsupportedFeedException {

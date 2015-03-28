@@ -11,6 +11,7 @@ import com.nana.core.trigger.interfaces.ITrigger;
 import com.nana.utils.pattern.observer.IObservable;
 
 public interface IState<T> extends IObservable<ITrigger> {
+	public @NonNull T getState();
 	public void setState(@NonNull final T value);
 	public boolean isValid(@NonNull final T value);
 	public boolean isAssignableFrom(final Class<?> clazz);

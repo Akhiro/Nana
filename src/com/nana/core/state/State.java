@@ -22,6 +22,11 @@ public class State<T> implements IState<T> {
 	}
 
 	@Override
+	public @NonNull T getState() {
+		return _state;
+	}
+
+	@Override
 	public void setState(@NonNull final T value) {
 		if (!_state.equals(value)) {
 			_state = value;
@@ -55,4 +60,5 @@ public class State<T> implements IState<T> {
 	public boolean isAssignableFrom(final Class<?> clazz) {
 		return _state.getClass().isAssignableFrom(clazz);
 	}
+
 }

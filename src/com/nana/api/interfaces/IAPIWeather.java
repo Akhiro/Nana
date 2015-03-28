@@ -5,8 +5,10 @@
 */
 package com.nana.api.interfaces;
 
-public interface IAPIWeather {
+import org.eclipse.jdt.annotation.NonNull;
 
-	public int getAtmo();
+public interface IAPIWeather extends IAPI {
+
+	public @NonNull Integer getAtmo();
 
 }

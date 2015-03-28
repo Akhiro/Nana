@@ -1,27 +1,26 @@
 /*
 * Copyright (c) 2015 - Seb&Lulu
 * Author(s) : Lulu
-* Date : 21 mars 2015
+* Date : 28 mars 2015
 */
-package com.nana.core.action.karotz.weather;
+package com.nana.core.generator;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.nana.api.interfaces.IAPIKarotz;
-import com.nana.api.weather.APIWeather;
-import com.nana.core.action.karotz.ActionKarotz;
+import com.nana.core.generator.interfaces.IGenerator;
+import com.nana.core.state.interfaces.IState;
 
-public class ActionAtmo extends ActionKarotz {
+public class GeneratorAtmo implements IGenerator {
+	@NonNull final IState<Integer> _stateAtmo;
 
-	public ActionAtmo(@NonNull final IAPIKarotz api) {
-		super(api);
+	public GeneratorAtmo(@NonNull final IState<Integer> stateAtmo) {
+		_stateAtmo = stateAtmo;
 	}
 
 	@Override
-	public void execute() {
+	public @NonNull String generate() {
 		String message;
-		APIWeather apiW = new APIWeather();
-		int iAtmo = apiW.getAtmo();
+		int iAtmo = _stateAtmo.getState();
 		String joke = "";
 
 		String atmo = Integer.toString(iAtmo);
@@ -33,7 +32,7 @@ public class ActionAtmo extends ActionKarotz {
 
 		message = "L'indice atmo du jour est de " + atmo + ". " + joke;
 
-		_api.sendMessage(message);
+		return message;
 	}
 
 }

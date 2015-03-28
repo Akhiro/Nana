@@ -2,7 +2,7 @@ package com.nana.api.interfaces;
 
 import com.nana.api.APIResponseCodeEnum;
 
-public interface IAPIKarotz extends IAPISendMessage {
+public interface IAPIKarotz extends IAPI, IAPISendMessage {
 	public APIResponseCodeEnum enableEars();
 
 	public APIResponseCodeEnum disableEars();

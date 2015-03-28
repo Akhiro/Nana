@@ -16,14 +16,16 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import com.nana.api.interfaces.IAPIWeather;
 
 public class APIWeather implements IAPIWeather {
 
 	@Override
-	public int getAtmo() {
+	public @NonNull Integer getAtmo() {
 		URL url;
-		int atmo = 0;
+		Integer atmo = 0;
 
 		try {
 			url = new URL("http://www.atmo-npdc.fr/component/atmo/?view=indice&format=feed");
@@ -54,5 +56,7 @@ public class APIWeather implements IAPIWeather {
 		return atmo;
 
 	}
+
+
 
 }

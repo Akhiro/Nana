@@ -15,13 +15,16 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 30 8 * * MON-FRI" />
+				<constructor-arg value="0/10 * * * * *" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.karotz.weather.ActionAtmo">
-				<constructor-arg name="api">
-					<ref bean="API-Karotz"/>
+			<bean class="com.nana.core.action.wrapper.ActionChangeStateAtmo">
+				<constructor-arg name="state">
+					<ref bean="Atmo"/>
+				</constructor-arg>
+				<constructor-arg name="iApi">
+					<ref bean="API-Weather"/>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
@@ -30,13 +33,42 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 0 12 * * SAT,SUN" />
+				<constructor-arg value="0 30 8 * * MON-FRI" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.karotz.weather.ActionAtmo">
+			<bean class="com.nana.core.action.ActionSendMessage">
 				<constructor-arg name="api">
 					<ref bean="API-Karotz"/>
+				</constructor-arg>
+				<constructor-arg name="generator">
+					<bean class ="com.nana.core.generator.GeneratorAtmo">
+						<constructor-arg name="stateAtmo">
+							<ref bean="Atmo"/>
+						</constructor-arg>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 40 20 * * SAT,SUN" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+				<constructor-arg name="generator">
+					<bean class ="com.nana.core.generator.GeneratorAtmo">
+						<constructor-arg name="stateAtmo">
+							<ref bean="Atmo"/>
+						</constructor-arg>
+					</bean>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>

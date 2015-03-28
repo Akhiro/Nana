@@ -11,8 +11,8 @@ import com.nana.core.action.interfaces.IAction;
 import com.nana.core.state.interfaces.IState;
 
 public class ActionChangeState<T> implements IAction {
-	@NonNull final IState<T> _state;
-	@NonNull final T _value;
+	@NonNull private final IState<T> _state;
+	@NonNull private final T _value;
 
 	public ActionChangeState(@NonNull final IState<T> state, @NonNull final T value ) {
 		if (!state.isAssignableFrom(value.getClass())) {
