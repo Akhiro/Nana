@@ -16,7 +16,6 @@ public abstract class ActionChangeStateWithApi<T, A extends IAPI> implements IAc
 	@NonNull protected final A _api;
 
 	public ActionChangeStateWithApi(@NonNull final IState<T> state, @NonNull final A api ) {
-
 		_state = state;
 		_api = api;
 	}

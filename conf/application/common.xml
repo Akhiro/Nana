@@ -17,6 +17,7 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+	
 	<bean id="Atmo" class="com.nana.core.state.State" scope="singleton">
 		<constructor-arg name="value">
 			<bean class="java.lang.Integer">
@@ -31,4 +32,7 @@
 		<constructor-arg name="TTSVoice" value="julie" />
 	</bean>	
 	<bean id="API-Weather" class="com.nana.api.weather.APIWeather" scope="singleton"/>
+	<bean id="API-Network" class="com.nana.api.network.APINetwork" scope="singleton">
+		<constructor-arg name="timeout" value="3000" />
+	</bean>
 </beans>
