@@ -23,6 +23,8 @@ public class APIKarotz implements IAPIKarotz {
 	private final ClockKarotz _clock;
 	private final SoundKarotz _sound;
 
+	private final Object _mutex;
+
 	public APIKarotz(final String beginUrl, final String TTSVoice) {
 		_beginUrl = beginUrl;
 		_TTSVoice = TTSVoice;
@@ -34,138 +36,190 @@ public class APIKarotz implements IAPIKarotz {
 		_mood = new MoodKarotz(beginUrl);
 		_clock = new ClockKarotz(beginUrl);
 		_sound = new SoundKarotz(beginUrl);
+
+		_mutex = new Object();
 	}
 
 	@Override
 	public APIResponseCodeEnum sendMessage(@NonNull final String message) {
-		return _tts.sendMessageTTSNow(message);
+		synchronized (_mutex) {
+			return _tts.sendMessageTTSNow(message);
+		}
 	}
 
 	@Override
-	public APIResponseCodeEnum sendMessageTTS(final String message, final int noCache,
-			final int mute) {
-		return _tts.sendMessageTTS(message, noCache, mute);
+	public APIResponseCodeEnum sendMessageTTS(final String message, final int noCache, final int mute) {
+		synchronized (_mutex) {
+			return _tts.sendMessageTTS(message, noCache, mute);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum clearCacheTTS() {
-		return _tts.clearCacheTTS();
+		synchronized (_mutex) {
+			return _tts.clearCacheTTS();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum enableEars() {
-		return _ears.enableEars();
+		synchronized (_mutex) {
+			return _ears.enableEars();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum disableEars() {
-		return _ears.disableEars();
+		synchronized (_mutex) {
+			return _ears.disableEars();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum resetEarsPosition() {
-		return _ears.resetEarsPosition();
+		synchronized (_mutex) {
+			return _ears.resetEarsPosition();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum randomEarsPosition() {
-		return _ears.randomEarsPosition();
+		synchronized (_mutex) {
+			return _ears.randomEarsPosition();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum moveEars(final int leftPosition, final int rightPosition) {
-		return _ears.moveEars(leftPosition, rightPosition);
+		synchronized (_mutex) {
+			return _ears.moveEars(leftPosition, rightPosition);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum shutDownLed() {
-		return _led.shutDownLed();
+		synchronized (_mutex) {
+			return _led.shutDownLed();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum fixedSavedLed(final String primaryColor) {
-		return _led.fixedSavedLed(primaryColor);
+		synchronized (_mutex) {
+			return _led.fixedSavedLed(primaryColor);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseOneColorSavedLed(final String primaryColor, final int speedPulse) {
-		return _led.pulseOneColorSavedLed(primaryColor, speedPulse);
+		synchronized (_mutex) {
+			return _led.pulseOneColorSavedLed(primaryColor, speedPulse);
+		}
 	}
 
 	@Override
-	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor,
-			final int speedPulse) {
-		return _led.pulseTwoColorSavedLed(primaryColor, secondColor, speedPulse);
+	public APIResponseCodeEnum pulseTwoColorSavedLed(final String primaryColor, final String secondColor, final int speedPulse) {
+		synchronized (_mutex) {
+			return _led.pulseTwoColorSavedLed(primaryColor, secondColor, speedPulse);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum fixedTemporaryLed(final String primaryColor) {
-		return _led.fixedTemporaryLed(primaryColor);
+		synchronized (_mutex) {
+			return _led.fixedTemporaryLed(primaryColor);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseOneColorTemporaryLed(final String primaryColor, final int speedPulse) {
-		return _led.pulseOneColorTemporaryLed(primaryColor, speedPulse);
+		synchronized (_mutex) {
+			return _led.pulseOneColorTemporaryLed(primaryColor, speedPulse);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum pulseTwoColorTemporaryLed(final String primaryColor, final String secondColor, final int speedPulse) {
-		return _led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
+		synchronized (_mutex) {
+			return _led.pulseTwoColorTemporaryLed(primaryColor, secondColor, speedPulse);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum wakeSilentKarotz() {
-		return _wake.wakeSilentKarotz();
+		synchronized (_mutex) {
+			return _wake.wakeSilentKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum wakeSoundKarotz() {
-		return _wake.wakeSoundKarotz();
+		synchronized (_mutex) {
+			return _wake.wakeSoundKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum sleepKarotz() {
-		return _wake.sleepKarotz();
+		synchronized (_mutex) {
+			return _wake.sleepKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum randomMoodKarotz() {
-		return _mood.randomMoodKarotz();
+		synchronized (_mutex) {
+			return _mood.randomMoodKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum moodKarotz(final int mood) {
-		return _mood.moodKarotz(mood);
+		synchronized (_mutex) {
+			return _mood.moodKarotz(mood);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum currentHourKarotz() {
-		return _clock.currentHourKarotz();
+		synchronized (_mutex) {
+			return _clock.currentHourKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum chosenHourKarotz(final int hour) {
-		return _clock.chosenHourKarotz(hour);
+		synchronized (_mutex) {
+			return _clock.chosenHourKarotz(hour);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum specificSoundKarotz(final String sound) {
-		return _sound.specificSoundKarotz(sound);
+		synchronized (_mutex) {
+			return _sound.specificSoundKarotz(sound);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum urlSoundKarotz(final String urlFile) {
-		return _sound.urlSoundKarotz(urlFile);
+		synchronized (_mutex) {
+			return _sound.urlSoundKarotz(urlFile);
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum pauseSoundKarotz() {
-		return _sound.pauseSoundKarotz();
+		synchronized (_mutex) {
+			return _sound.pauseSoundKarotz();
+		}
 	}
 
 	@Override
 	public APIResponseCodeEnum quitSoundKarotz() {
-		return _sound.quitSoundKarotz();
+		synchronized (_mutex) {
+			return _sound.quitSoundKarotz();
+		}
 	}
 
 }
