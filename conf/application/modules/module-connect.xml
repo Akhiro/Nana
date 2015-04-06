@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	
+	<import resource="../common.xml"/>
+		
+	<!-- MODULES de TEST -->
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0/5 * * * * *" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
+				<constructor-arg name="state">
+					<ref bean="CéliaEstConnectée"/>
+				</constructor-arg>
+				<constructor-arg name="api">
+					<ref bean="API-Network"/>
+				</constructor-arg>
+				<constructor-arg name="adress" value="192.168.0.12"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0/5 * * * * *" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
+				<constructor-arg name="state">
+					<ref bean="SebEstConnecté"/>
+				</constructor-arg>
+				<constructor-arg name="api">
+					<ref bean="API-Network"/>
+				</constructor-arg>
+				<constructor-arg name="adress" value="192.168.0.11"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerState">
+				<constructor-arg>
+					<bean class="com.nana.core.validator.wrapper.ValidatorBoolean">
+						<constructor-arg name="state">
+							<ref bean="CéliaEstConnectée"/>
+						</constructor-arg>
+						<constructor-arg type="java.lang.Boolean" name="value" value="true"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Hey, ferme de suite cette page Facebook !"/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerState">
+				<constructor-arg>
+					<bean class="com.nana.core.validator.wrapper.ValidatorBoolean">
+						<constructor-arg name="state">
+							<ref bean="SebEstConnecté"/>
+						</constructor-arg>
+						<constructor-arg type="java.lang.Boolean" name="value" value="true"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Ah mais, je te prends quand tu veux en duel sur LoL, je gagne."/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerAND">
+				<constructor-arg name="trigger">
+					<bean class="com.nana.core.trigger.TriggerTime">
+						<constructor-arg value="0 55 22 * * MON-FRI" />
+					</bean>
+				</constructor-arg>
+				<constructor-arg name="validator">
+					<bean class="com.nana.core.validator.wrapper.ValidatorBoolean">
+						<constructor-arg name="state">
+							<ref bean="CéliaEstConnectée"/>
+						</constructor-arg>
+						<constructor-arg type="java.lang.Boolean" name="value" value="true"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Ben alors, encore debout ? Tu vas encore avoir du mal à te lever."/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerAND">
+				<constructor-arg name="trigger">
+					<bean class="com.nana.core.trigger.TriggerTime">
+						<constructor-arg value="0 55 22 * * MON-FRI" />
+					</bean>
+				</constructor-arg>
+				<constructor-arg name="validator">
+					<bean class="com.nana.core.validator.wrapper.ValidatorBoolean">
+						<constructor-arg name="state">
+							<ref bean="SebEstConnecté"/>
+						</constructor-arg>
+						<constructor-arg type="java.lang.Boolean" name="value" value="true"/>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Je sais que les vidéos Koreus sont magiques mais... tu voudras pas aller masser ta chérie plutôt ?"/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+</beans>
