@@ -17,6 +17,13 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+	<bean id="SebEstConnecté" class="com.nana.core.state.State" scope="singleton">
+		<constructor-arg name="value">
+			<bean class="java.lang.Boolean">
+				<constructor-arg value="false"/>
+			</bean>
+		</constructor-arg>
+	</bean>
 	
 	<bean id="Atmo" class="com.nana.core.state.State" scope="singleton">
 		<constructor-arg name="value">

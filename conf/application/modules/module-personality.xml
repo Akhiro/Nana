@@ -27,4 +27,34 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 45 8 * * MON-FRI" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Vous êtes en retard, hop hop !"/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean class="com.nana.core.task.Task">
+		<constructor-arg name="trigger">
+			<bean class="com.nana.core.trigger.TriggerTime">
+				<constructor-arg value="0 45 7 * * MON-FRI" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="action">
+			<bean class="com.nana.core.action.ActionSendMessage">
+				<constructor-arg name="message" value="Bonjour Seb, as-tu bien dormi ? Moi j'ai les oreilles engourdies !"/>
+				<constructor-arg name="api">
+					<ref bean="API-Karotz"/>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
 </beans>
