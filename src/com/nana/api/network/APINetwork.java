@@ -5,8 +5,8 @@
  */
 package com.nana.api.network;
 
-import java.io.IOException;
-import java.net.InetAddress;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -15,22 +15,38 @@ import com.nana.api.interfaces.IAPIPing;
 
 public class APINetwork implements IAPIPing {
 
-	private final int _timeout;
-
-	public APINetwork(final int timeout) {
-		_timeout = timeout;
+	public APINetwork() {
 	}
 
 	@Override
 	public @NonNull APIResponseCodeEnum ping(@NonNull final String address) {
-		APIResponseCodeEnum status = APIResponseCodeEnum.TIMEOUT;
-		try {
-			if (InetAddress.getByName(address).isReachable(_timeout)) {
-				status = APIResponseCodeEnum.SUCCESS;
-			}
-		} catch (IOException e) {
-			status = APIResponseCodeEnum.ERROR;
+		String cmd = "";
+	    try {
+			if (System.getProperty("os.name").startsWith("Windows")) {
+                // For Windows
+                cmd = "ping -n 1 " + address;
+	        } else {
+                // For Linux and OSX
+                cmd = "ping -c 1 " + address;
+	        }
+
+	        Process myProcess = Runtime.getRuntime().exec(cmd);
+
+	        try (BufferedReader stdInput = new BufferedReader(new InputStreamReader(myProcess.getInputStream()));
+		    BufferedReader stdError = new BufferedReader(new InputStreamReader(myProcess.getErrorStream()))) {
+			    String s = null;
+	        	String result = "";
+
+	        	while ((s = stdInput.readLine()) != null) {
+	        		result += s + "\n";
+			    }
+
+			    return (result.contains("TTL")) ? APIResponseCodeEnum.SUCCESS : APIResponseCodeEnum.TIMEOUT;
+	        }
+		} catch ( Exception e ) {
+	        e.printStackTrace();
+	        return APIResponseCodeEnum.ERROR;
 		}
-		return status;
 	}
 }
+

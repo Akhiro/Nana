@@ -39,7 +39,5 @@
 		<constructor-arg name="TTSVoice" value="julie" />
 	</bean>	
 	<bean id="API-Weather" class="com.nana.api.weather.APIWeather" scope="singleton"/>
-	<bean id="API-Network" class="com.nana.api.network.APINetwork" scope="singleton">
-		<constructor-arg name="timeout" value="3000" />
-	</bean>
+	<bean id="API-Network" class="com.nana.api.network.APINetwork" scope="singleton"/>
 </beans>

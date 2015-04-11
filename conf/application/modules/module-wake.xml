@@ -15,7 +15,7 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 55 23 * * SUN-THU" />
+				<constructor-arg value="0 35 23 * * SUN-THU" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
@@ -30,7 +30,7 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 0 1 * * SAT,SUN" />
+				<constructor-arg value="0 35 0 * * SAT,SUN" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
@@ -60,7 +60,7 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 00 10 * * SAT,SUN" />
+				<constructor-arg value="0 55 9 * * SAT,SUN" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">

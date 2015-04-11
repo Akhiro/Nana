@@ -15,36 +15,33 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0/5 * * * * *" />
+				<constructor-arg value="*/5 * * * * *" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
-				<constructor-arg name="state">
-					<ref bean="CéliaEstConnectée"/>
-				</constructor-arg>
-				<constructor-arg name="api">
-					<ref bean="API-Network"/>
-				</constructor-arg>
-				<constructor-arg name="adress" value="192.168.0.12"/>
-			</bean>
-		</constructor-arg>
-	</bean>
-	<bean class="com.nana.core.task.Task">
-		<constructor-arg name="trigger">
-			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0/5 * * * * *" />
-			</bean>
-		</constructor-arg>
-		<constructor-arg name="action">
-			<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
-				<constructor-arg name="state">
-					<ref bean="SebEstConnecté"/>
-				</constructor-arg>
-				<constructor-arg name="api">
-					<ref bean="API-Network"/>
-				</constructor-arg>
-				<constructor-arg name="adress" value="192.168.0.11"/>
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
+							<constructor-arg name="state">
+								<ref bean="SebEstConnecté"/>
+							</constructor-arg>
+							<constructor-arg name="api">
+								<ref bean="API-Network"/>
+							</constructor-arg>
+							<constructor-arg name="adress" value="192.168.0.11"/>
+						</bean>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStatePing">
+							<constructor-arg name="state">
+								<ref bean="CéliaEstConnectée"/>
+							</constructor-arg>
+							<constructor-arg name="api">
+								<ref bean="API-Network"/>
+							</constructor-arg>
+							<constructor-arg name="adress" value="192.168.0.12"/>
+						</bean>
+					</list>
+				</constructor-arg>		
 			</bean>
 		</constructor-arg>
 	</bean>
@@ -97,10 +94,10 @@
 	
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
-			<bean class="com.nana.core.trigger.TriggerAND">
+			<bean class="com.nana.core.trigger.decorator.TriggerAND">
 				<constructor-arg name="trigger">
 					<bean class="com.nana.core.trigger.TriggerTime">
-						<constructor-arg value="0 55 22 * * MON-FRI" />
+						<constructor-arg value="0 26 17 * * MON-FRI" />
 					</bean>
 				</constructor-arg>
 				<constructor-arg name="validator">
@@ -125,10 +122,10 @@
 	
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
-			<bean class="com.nana.core.trigger.TriggerAND">
+			<bean class="com.nana.core.trigger.decorator.TriggerAND">
 				<constructor-arg name="trigger">
 					<bean class="com.nana.core.trigger.TriggerTime">
-						<constructor-arg value="0 55 22 * * MON-FRI" />
+						<constructor-arg value="0 08 17 * * MON-FRI" />
 					</bean>
 				</constructor-arg>
 				<constructor-arg name="validator">

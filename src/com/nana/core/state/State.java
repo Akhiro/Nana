@@ -8,12 +8,16 @@ package com.nana.core.state;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.jdt.annotation.NonNull;
 
 import com.nana.core.state.interfaces.IState;
 import com.nana.core.trigger.interfaces.ITrigger;
 
 public class State<T> implements IState<T> {
+	static final Logger logger = LogManager.getLogger(State.class.getName());
+
 	@NonNull private T _state;
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
@@ -31,7 +35,8 @@ public class State<T> implements IState<T> {
 		if (!_state.equals(value)) {
 			_state = value;
 
-			/** On notifie que l'etat a changé a tous les triggers **/
+			/** On notifie que l'état a changé à tous les triggers **/
+			logger.info("Changement du : " + this.getClass().getSimpleName() + " Value : " + value);
 			notifyObservers();
 		}
 	}

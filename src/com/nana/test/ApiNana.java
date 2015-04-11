@@ -14,20 +14,44 @@ import com.nana.api.weather.APIWeather;
 public class ApiNana {
 
 	public static void main(final String[] args) throws Exception {
-		//podcast > http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3
-		// atmo > http://www.atmo-npdc.fr/component/atmo/?view=indice&format=feed
+		// podcast >
+		// http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3
+		// atmo >
+		// http://www.atmo-npdc.fr/component/atmo/?view=indice&format=feed
 
-		//testEarsKarotz();
-		//testLedKarotz();
-		//testWakeUpKarotz();
-		//testMoodKarotz();
-		//testClockKarotz();
-		//testSoundKarotz();
-		//testAtmo();
+		// testEarsKarotz();
+		// testLedKarotz();
+		testWakeUpKarotz();
+		// testMoodKarotz();
+		// testClockKarotz();
+		// testSoundKarotz();
+		// testAtmo();
+		// testAmTemp();
+		// testScenario();
 	}
 
-	public static void testAtmo() throws MalformedURLException, FeedIOException, FeedXMLParseException, UnsupportedFeedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+	public static void testScenario() throws InterruptedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
+		String radio = "http://jazzradio.ice.infomaniak.ch/jazzradio-high.mp3";
+
+		api.urlSoundKarotz(radio);
+		Thread.sleep(6000);
+		api.sendMessage("Je parle");
+	}
+
+	public static void testAmTemp() throws MalformedURLException,
+			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
+		IAPIWeather apiW = new APIWeather();
+
+		String atmo = "La température du matin est de " + apiW.getAmTemp();
+
+		api.sendMessage(atmo);
+	}
+
+	public static void testAtmo() throws MalformedURLException,
+			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		IAPIWeather apiW = new APIWeather();
 
 		String atmo = "L'indice atmo est de " + apiW.getAtmo();
@@ -36,14 +60,15 @@ public class ApiNana {
 	}
 
 	public static void testSoundKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		String podcast = "http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3";
+		String radio = "http://jazzradio.ice.infomaniak.ch/jazzradio-high.mp3";
 
 		api.specificSoundKarotz("ready");
 		Thread.sleep(3000);
 		api.specificSoundKarotz("RADISCUIT");
 		Thread.sleep(3000);
-		api.urlSoundKarotz(podcast);
+		api.urlSoundKarotz(radio);
 		Thread.sleep(6000);
 		api.pauseSoundKarotz();
 		Thread.sleep(6000);
@@ -53,7 +78,7 @@ public class ApiNana {
 	}
 
 	public static void testClockKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		api.currentHourKarotz();
 		Thread.sleep(3000);
 		api.chosenHourKarotz(4);
@@ -62,7 +87,7 @@ public class ApiNana {
 	}
 
 	public static void testMoodKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		api.randomMoodKarotz();
 		Thread.sleep(3000);
 		api.moodKarotz(5);
@@ -73,7 +98,7 @@ public class ApiNana {
 	}
 
 	public static void testWakeUpKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		api.sendMessage("Bonne nuit !");
 		Thread.sleep(3000);
 		api.sleepKarotz();
@@ -90,7 +115,7 @@ public class ApiNana {
 	}
 
 	public static void testEarsKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		api.sendMessage("Initialisation de mes oreilles");
 		Thread.sleep(3000);
 		api.enableEars();
@@ -118,7 +143,7 @@ public class ApiNana {
 	}
 
 	public static void testLedKarotz() throws InterruptedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/","julie");
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
 		api.sendMessage("On éteint la led.");
 		Thread.sleep(3000);
 		api.shutDownLed();
