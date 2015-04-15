@@ -39,15 +39,15 @@ public class ApiNana {
 		api.sendMessage("Je parle");
 	}
 
-	public static void testAmTemp() throws MalformedURLException,
-			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
-		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
-		IAPIWeather apiW = new APIWeather();
-
-		String atmo = "La température du matin est de " + apiW.getAmTemp();
-
-		api.sendMessage(atmo);
-	}
+//	public static void testAmTemp() throws MalformedURLException,
+//			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
+//		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
+//		IAPIWeather apiW = new APIWeather();
+//
+//		String atmo = "La température du matin est de " + apiW.getAmTemp();
+//
+//		api.sendMessage(atmo);
+//	}
 
 	public static void testAtmo() throws MalformedURLException,
 			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
