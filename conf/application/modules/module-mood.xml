@@ -22,7 +22,7 @@
 			<bean class="com.nana.core.action.decorator.ActionGROUP">
 				<constructor-arg name="actions">
 					<list>
-						<bean class="com.nana.core.action.decorator.ActionRANDOM">
+						<bean class="com.nana.core.action.decorator.ActionDELAY">
 							<constructor-arg name="action">
 								<bean class="com.nana.core.action.karotz.mood.ActionMood">
 									<constructor-arg name="api">
@@ -54,7 +54,7 @@
 			<bean class="com.nana.core.action.decorator.ActionGROUP">
 				<constructor-arg name="actions">
 					<list>
-						<bean class="com.nana.core.action.decorator.ActionRANDOM">
+						<bean class="com.nana.core.action.decorator.ActionDELAY">
 							<constructor-arg name="action">
 								<bean class="com.nana.core.action.karotz.mood.ActionMood">
 									<constructor-arg name="api">

@@ -17,5 +17,6 @@
 	    <value>conf/application/modules/module-weather.xml</value>
 	    <value>conf/application/modules/module-personality.xml</value>
 	    <value>conf/application/modules/module-connect.xml</value>
+	    <!-- <value>conf/application/modules/module-test.xml</value> -->
 	</util:list>
 </beans>

@@ -55,7 +55,4 @@ public class APIWeather implements IAPIWeather {
 
 		return atmo;
 	}
-
-
-
 }

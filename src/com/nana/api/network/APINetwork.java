@@ -41,7 +41,7 @@ public class APINetwork implements IAPIPing {
 	        		result += s + "\n";
 			    }
 
-			    return (result.contains("TTL")) ? APIResponseCodeEnum.SUCCESS : APIResponseCodeEnum.TIMEOUT;
+			    return (result.toLowerCase().contains("ttl")) ? APIResponseCodeEnum.SUCCESS : APIResponseCodeEnum.TIMEOUT;
 	        }
 		} catch ( Exception e ) {
 	        e.printStackTrace();
