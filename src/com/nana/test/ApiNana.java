@@ -18,15 +18,17 @@ public class ApiNana {
 		// http://download-audio.rts.ch/couleur3/programmes/point-barre/2015/point-barre_20150307_full_point-barre_14c285ce-8bff-44fb-860a-5031e3c2124f-128k.mp3
 		// atmo >
 		// http://www.atmo-npdc.fr/component/atmo/?view=indice&format=feed
+		// Weather >
+		// http://www.tourcoing.maville.com/flux/rss/meteo.php?xtor=RSS-18&code=tc
 
 		// testEarsKarotz();
 		// testLedKarotz();
-		testWakeUpKarotz();
+		//testWakeUpKarotz();
 		// testMoodKarotz();
 		// testClockKarotz();
 		// testSoundKarotz();
-		// testAtmo();
-		// testAmTemp();
+		//testAtmo();
+		testWeather();
 		// testScenario();
 	}
 
@@ -39,15 +41,20 @@ public class ApiNana {
 		api.sendMessage("Je parle");
 	}
 
-//	public static void testAmTemp() throws MalformedURLException,
-//			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
-//		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
-//		IAPIWeather apiW = new APIWeather();
-//
-//		String atmo = "La température du matin est de " + apiW.getAmTemp();
-//
-//		api.sendMessage(atmo);
-//	}
+	public static void testWeather() throws MalformedURLException,
+			FeedIOException, FeedXMLParseException, UnsupportedFeedException {
+		IAPIKarotz api = new APIKarotz("http://192.168.0.40/cgi-bin/", "julie");
+		IAPIWeather apiW = new APIWeather();
+
+		String atmo = "L'indice atmo est de " + apiW.getAtmo();
+		api.sendMessage(atmo);
+		String templow = "La température minimum est de " + apiW.getTempLow();
+		api.sendMessage(templow);
+		String tempHigh = "La température maximum est de " + apiW.getTempHigh();
+		api.sendMessage(tempHigh);
+		String windSpeed = "La vitesse du vent est de " + apiW.getWindSpeed();
+		api.sendMessage(windSpeed);
+	}
 
 	public static void testAtmo() throws MalformedURLException,
 			FeedIOException, FeedXMLParseException, UnsupportedFeedException {

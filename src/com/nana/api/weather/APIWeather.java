@@ -18,9 +18,17 @@ import java.util.regex.Pattern;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.guendouz.yweather.YWeather;
+import com.guendouz.yweather.model.Units;
+import com.guendouz.yweather.model.WeatherInfo;
 import com.nana.api.interfaces.IAPIWeather;
 
 public class APIWeather implements IAPIWeather {
+
+	// Format :
+	// Forecast [day=Mon, date=Mon Apr 20 00:00:00 CEST 2015, low=6, high=20, text=Sunny, code=32]
+	// Wind [chill=13, direction=40, speed=19.31]
+	// Astronomy [sunrise=Thu Jan 01 06:46:00 CET 1970, sunset=Thu Jan 01 20:46:00 CET 1970]
 
 	@Override
 	public @NonNull Integer getAtmo() {
@@ -55,4 +63,44 @@ public class APIWeather implements IAPIWeather {
 
 		return atmo;
 	}
+
+	@Override
+	public @NonNull Integer getTempLow() {
+
+		YWeather weather = new YWeather();
+		Integer tempLow = 0;
+
+		WeatherInfo info = weather.getWeatherForPlace("Tourcoing", Units.TEMP_C);
+		tempLow = info.getItem().getForecastOne().getLow();
+
+		return tempLow;
+
+	}
+
+	@Override
+	public @NonNull Integer getTempHigh() {
+
+		YWeather weather = new YWeather();
+		Integer tempHigh = 0;
+
+		WeatherInfo info = weather.getWeatherForPlace("Tourcoing", Units.TEMP_C);
+		tempHigh = info.getItem().getForecastOne().getHigh();
+
+		return tempHigh;
+
+	}
+
+	@Override
+	public @NonNull Integer getWindSpeed() {
+
+		YWeather weather = new YWeather();
+		Integer speedWind = 0;
+
+		WeatherInfo info = weather.getWeatherForPlace("Tourcoing", Units.TEMP_C);
+		speedWind = Math.round(info.getWind().getSpeed());
+
+		return speedWind;
+
+	}
+
 }

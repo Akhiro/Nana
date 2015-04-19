@@ -11,4 +11,10 @@ public interface IAPIWeather extends IAPI {
 
 	public @NonNull Integer getAtmo();
 
+	public @NonNull	Integer getTempLow();
+
+	public @NonNull	Integer getTempHigh();
+
+	public @NonNull	Integer getWindSpeed();
+
 }

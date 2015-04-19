@@ -32,6 +32,27 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+	<bean id="TempLow" class="com.nana.core.state.State" scope="singleton">
+		<constructor-arg name="value">
+			<bean class="java.lang.Integer">
+				<constructor-arg value="0"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean id="TempHigh" class="com.nana.core.state.State" scope="singleton">
+		<constructor-arg name="value">
+			<bean class="java.lang.Integer">
+				<constructor-arg value="0"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean id="WindSpeed" class="com.nana.core.state.State" scope="singleton">
+		<constructor-arg name="value">
+			<bean class="java.lang.Integer">
+				<constructor-arg value="0"/>
+			</bean>
+		</constructor-arg>
+	</bean>
 	
 	<!-- LISTES DES APIS DISPO DANS LES MODULES -->
 	<bean id="API-Karotz" class="com.nana.api.karotz.APIKarotz" scope="singleton">

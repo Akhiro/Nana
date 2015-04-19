@@ -19,6 +19,7 @@
 	<classpathentry kind="lib" path="lib/feed4j/nekohtml.jar"/>
 	<classpathentry kind="lib" path="lib/feed4j/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="lib/feed4j/xml-apis.jar"/>
+	<classpathentry kind="lib" path="lib/YahooWeather.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

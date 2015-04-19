@@ -15,17 +15,47 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0/10 * * * * *" />
+				<constructor-arg value="0 30 * * * *" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.wrapper.ActionChangeStateAtmo">
-				<constructor-arg name="state">
-					<ref bean="Atmo"/>
-				</constructor-arg>
-				<constructor-arg name="iApi">
-					<ref bean="API-Weather"/>
-				</constructor-arg>
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStateAtmo">
+							<constructor-arg name="state">
+								<ref bean="Atmo"/>
+							</constructor-arg>
+							<constructor-arg name="iApi">
+								<ref bean="API-Weather"/>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStateTempLow">
+							<constructor-arg name="state">
+								<ref bean="TempLow"/>
+							</constructor-arg>
+							<constructor-arg name="iApi">
+								<ref bean="API-Weather"/>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStateTempHigh">
+							<constructor-arg name="state">
+								<ref bean="TempHigh"/>
+							</constructor-arg>
+							<constructor-arg name="iApi">
+								<ref bean="API-Weather"/>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.wrapper.ActionChangeStateWindSpeed">
+							<constructor-arg name="state">
+								<ref bean="WindSpeed"/>
+							</constructor-arg>
+							<constructor-arg name="iApi">
+								<ref bean="API-Weather"/>
+							</constructor-arg>
+						</bean>
+					</list>
+				</constructor-arg>		
 			</bean>
 		</constructor-arg>
 	</bean>
@@ -37,17 +67,59 @@
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.ActionSendMessage">
-				<constructor-arg name="api">
-					<ref bean="API-Karotz"/>
-				</constructor-arg>
-				<constructor-arg name="generator">
-					<bean class ="com.nana.core.generator.GeneratorAtmo">
-						<constructor-arg name="stateAtmo">
-							<ref bean="Atmo"/>
-						</constructor-arg>
-					</bean>
-				</constructor-arg>
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorAtmo">
+									<constructor-arg name="stateAtmo">
+										<ref bean="Atmo"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorTempLow">
+									<constructor-arg name="stateTempLow">
+										<ref bean="TempLow"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorTempHigh">
+									<constructor-arg name="stateTempHigh">
+										<ref bean="TempHigh"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorWindSpeed">
+									<constructor-arg name="stateWindSpeed">
+										<ref bean="WindSpeed"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+					</list>
+				</constructor-arg>		
 			</bean>
 		</constructor-arg>
 	</bean>
@@ -55,21 +127,63 @@
 	<bean class="com.nana.core.task.Task">
 		<constructor-arg name="trigger">
 			<bean class="com.nana.core.trigger.TriggerTime">
-				<constructor-arg value="0 40 20 * * SAT,SUN" />
+				<constructor-arg value="0 45 10,11,12 * * SAT,SUN" />
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="action">
-			<bean class="com.nana.core.action.ActionSendMessage">
-				<constructor-arg name="api">
-					<ref bean="API-Karotz"/>
-				</constructor-arg>
-				<constructor-arg name="generator">
-					<bean class ="com.nana.core.generator.GeneratorAtmo">
-						<constructor-arg name="stateAtmo">
-							<ref bean="Atmo"/>
-						</constructor-arg>
-					</bean>
-				</constructor-arg>
+			<bean class="com.nana.core.action.decorator.ActionGROUP">
+				<constructor-arg name="actions">
+					<list>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorAtmo">
+									<constructor-arg name="stateAtmo">
+										<ref bean="Atmo"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorTempLow">
+									<constructor-arg name="stateTempLow">
+										<ref bean="TempLow"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorTempHigh">
+									<constructor-arg name="stateTempHigh">
+										<ref bean="TempHigh"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+						<bean class="com.nana.core.action.ActionSendMessage">
+							<constructor-arg name="api">
+								<ref bean="API-Karotz"/>
+							</constructor-arg>
+							<constructor-arg name="generator">
+								<bean class ="com.nana.core.generator.GeneratorWindSpeed">
+									<constructor-arg name="stateWindSpeed">
+										<ref bean="WindSpeed"/>
+									</constructor-arg>
+								</bean>
+							</constructor-arg>
+						</bean>
+					</list>
+				</constructor-arg>		
 			</bean>
 		</constructor-arg>
 	</bean>
